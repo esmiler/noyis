@@ -90,6 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "geo.placename", content: "St. John's, Antigua and Barbuda" },
       { name: "geo.position", content: "17.1175;-61.8456" },
       { name: "ICBM", content: "17.1175, -61.8456" },
+      { name: "google-site-verification", content: "0vkyCmUgk4a_xbT-KMU23DbnQeNFGzT-9Fw0gJ1u49w" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
