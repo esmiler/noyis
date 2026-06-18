@@ -175,6 +175,85 @@ export const t: Dict = {
     fr: "Nous confirmerons le prix total et la livraison sur WhatsApp.",
     pt: "Confirmaremos o preço total e a entrega pelo WhatsApp.",
   },
+
+  carn_eyebrow: {
+    en: "Antigua Carnival 2026 · Jul 25 – Aug 4",
+    es: "Carnaval de Antigua 2026 · 25 jul – 4 ago",
+    fr: "Carnaval d'Antigua 2026 · 25 juil – 4 août",
+    pt: "Carnaval de Antígua 2026 · 25 jul – 4 ago",
+  },
+  carn_s1_title: {
+    en: "Feel the Rhythm. Build Your Stamina.",
+    es: "Siente el Ritmo. Construye tu Resistencia.",
+    fr: "Ressentez le Rythme. Bâtissez votre Endurance.",
+    pt: "Sinta o Ritmo. Construa sua Resistência.",
+  },
+  carn_s1_sub: {
+    en: "Prepare for the road with Treasure Man and Treasure Woman. Energy, focus and endurance from T-Shirt Mas to Last Lap.",
+    es: "Prepárate para la ruta con Treasure Man y Treasure Woman. Energía, enfoque y resistencia desde T-Shirt Mas hasta Last Lap.",
+    fr: "Préparez-vous pour la route avec Treasure Man et Treasure Woman. Énergie, concentration et endurance, du T-Shirt Mas au Last Lap.",
+    pt: "Prepare-se para a estrada com Treasure Man e Treasure Woman. Energia, foco e resistência do T-Shirt Mas ao Last Lap.",
+  },
+  carn_s1_cta: {
+    en: "Shop Endurance Boosters",
+    es: "Comprar Potenciadores de Resistencia",
+    fr: "Acheter les Boosters d'Endurance",
+    pt: "Comprar Potencializadores de Resistência",
+  },
+  carn_s2_title: {
+    en: "J'ouvert Morning Clear-Up & Recovery.",
+    es: "Recuperación y Limpieza Post J'ouvert.",
+    fr: "Récupération et Nettoyage du Matin J'ouvert.",
+    pt: "Recuperação e Limpeza Pós J'ouvert.",
+  },
+  carn_s2_sub: {
+    en: "Wash off paint, powder and festival exhaustion. Rehydrate and protect your liver with Treasure Herbs and our herbal detox blends.",
+    es: "Quita la pintura, el polvo y el cansancio del festival. Rehidrátate y protege tu hígado con Treasure Herbs y nuestras mezclas detox herbales.",
+    fr: "Éliminez peinture, poudre et fatigue du festival. Réhydratez-vous et protégez votre foie avec Treasure Herbs et nos mélanges détox.",
+    pt: "Lave a tinta, o pó e o cansaço do festival. Reidrate e proteja o fígado com Treasure Herbs e nossas misturas detox de ervas.",
+  },
+  carn_s2_cta: {
+    en: "Browse Recovery Teas",
+    es: "Ver Tés de Recuperación",
+    fr: "Voir les Tisanes de Récupération",
+    pt: "Ver Chás de Recuperação",
+  },
+  carn_s3_kicker: {
+    en: "Lower Nevis Street, St. John's",
+    es: "Lower Nevis Street, St. John's",
+    fr: "Lower Nevis Street, St. John's",
+    pt: "Lower Nevis Street, St. John's",
+  },
+  carn_s3_title: {
+    en: "Stock Up Locally in St. John's.",
+    es: "Abastécete Localmente en St. John's.",
+    fr: "Faites le Plein à St. John's.",
+    pt: "Abasteça-se Localmente em St. John's.",
+  },
+  carn_s3_sub: {
+    en: "By Cherry Jamdon Club. Pop in before Carnival City or tap to order on WhatsApp for quick regional delivery.",
+    es: "Junto a Cherry Jamdon Club. Pasa antes de Carnival City o pide por WhatsApp para entrega regional rápida.",
+    fr: "Près du Cherry Jamdon Club. Passez avant Carnival City ou commandez sur WhatsApp pour une livraison régionale rapide.",
+    pt: "Ao lado do Cherry Jamdon Club. Passe antes da Carnival City ou peça pelo WhatsApp para entrega regional rápida.",
+  },
+  carn_s3_cta: {
+    en: "Message to Order Instantly",
+    es: "Pedir al instante por WhatsApp",
+    fr: "Commander sur WhatsApp",
+    pt: "Pedir já pelo WhatsApp",
+  },
+  carn_s3_directions: {
+    en: "Get directions",
+    es: "Cómo llegar",
+    fr: "Itinéraire",
+    pt: "Como chegar",
+  },
+  carn_grounding: {
+    en: "Formulated with Caribbean botanical extracts to support recovery from intense dehydration.",
+    es: "Formulado con extractos botánicos del Caribe para apoyar la recuperación tras una deshidratación intensa.",
+    fr: "Formulé avec des extraits botaniques des Caraïbes pour soutenir la récupération après une déshydratation intense.",
+    pt: "Formulado com extratos botânicos caribenhos para apoiar a recuperação de desidratação intensa.",
+  },
 };
 
 export function tr(key: keyof typeof t, lang: Lang): string {
