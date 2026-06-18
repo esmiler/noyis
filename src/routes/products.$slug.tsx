@@ -71,6 +71,7 @@ function ProductPage() {
     "@type": "Product",
     name,
     description: short,
+    ...(p.hero_image ? { image: p.hero_image } : {}),
     brand: { "@type": "Brand", name: "Noyis Africa" },
     countryOfOrigin: p.country_of_origin,
     offers: {
