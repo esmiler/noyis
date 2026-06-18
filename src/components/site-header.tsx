@@ -111,6 +111,7 @@ export function SiteHeader() {
             <div className="mt-2 flex items-center gap-2 px-3 py-2">
               <Globe className="h-4 w-4 text-muted-foreground" />
               <select
+                aria-label="Language"
                 className="flex-1 rounded-md border border-input bg-background px-2 py-1.5 text-sm"
                 value={lang}
                 onChange={(e) => setLang(e.target.value as Lang)}
