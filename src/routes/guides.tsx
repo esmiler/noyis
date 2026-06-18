@@ -15,7 +15,7 @@ const guidesQuery = queryOptions({
 export const Route = createFileRoute("/guides")({
   head: () => ({
     meta: [
-      { title: "Wellness Guides — Caribbean Herbal Knowledge | Noyis Africa" },
+      { title: "Wellness Guides — Noyis Africa" },
       {
         name: "description",
         content:
@@ -26,8 +26,21 @@ export const Route = createFileRoute("/guides")({
         property: "og:description",
         content: "Caribbean herbal traditions, product guides and how-to brewing instructions.",
       },
+      { property: "og:url", content: "/guides" },
     ],
     links: [{ rel: "canonical", href: "/guides" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Wellness Guides — Noyis Africa",
+          description: "Caribbean herbal traditions, product guides and how-to brewing instructions.",
+          url: "/guides",
+        }),
+      },
+    ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(guidesQuery),
   component: GuidesIndex,

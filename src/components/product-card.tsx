@@ -48,9 +48,9 @@ export function ProductCard({ product }: { product: ProductLike }) {
 
       <div className="flex flex-1 flex-col gap-2 p-4">
         <Link to="/products/$slug" params={{ slug: product.slug }} className="block">
-          <h3 className="font-display text-lg leading-tight text-botanical group-hover:text-primary">
+          <h2 className="font-display text-lg leading-tight text-botanical group-hover:text-primary">
             {name}
-          </h3>
+          </h2>
         </Link>
         <p className="line-clamp-2 text-sm text-muted-foreground">{short}</p>
 

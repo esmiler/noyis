@@ -23,13 +23,17 @@ const categoriesQuery = queryOptions({
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Noyis Africa — Natural Wellness & Wholesale Beverages in the Caribbean" },
+      { title: "Noyis Africa — Caribbean Wellness & Wholesale" },
       {
         name: "description",
         content:
-          "Premium herbal formulas (Treasure Man, Treasure Woman, Treasure Herbs), functional coffees and wholesale beverages from Antigua & Barbuda. WhatsApp ordering, Caribbean delivery.",
+          "Herbal formulas (Treasure Man, Treasure Woman, Treasure Herbs), functional coffees and wholesale beverages from Antigua. WhatsApp ordering, Caribbean delivery.",
       },
+      { property: "og:title", content: "Noyis Africa — Caribbean Wellness & Wholesale" },
+      { property: "og:description", content: "Herbal formulas, functional coffees and wholesale beverages from Antigua. Your Health, Our Priority." },
+      { property: "og:url", content: "/" },
     ],
+    links: [{ rel: "canonical", href: "/" }],
   }),
   loader: async ({ context }) => {
     await Promise.all([
