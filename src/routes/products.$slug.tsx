@@ -17,12 +17,27 @@ export const Route = createFileRoute("/products/$slug")({
   loader: async ({ context, params }) => {
     const data = await context.queryClient.ensureQueryData(productQuery(params.slug));
     if (!data) throw notFound();
+    return data;
   },
-  head: ({ params }) => ({
-    meta: [
-      { title: `${params.slug.replace(/-/g, " ")} — Noyis Africa` },
-    ],
-  }),
+  head: ({ params, loaderData }) => {
+    const name = (loaderData?.name_localized as Record<string, string> | undefined)?.en ?? params.slug.replace(/-/g, " ");
+    const desc =
+      (loaderData?.short_description_localized as Record<string, string> | undefined)?.en ??
+      `${name} from Noyis Africa — premium Caribbean wellness and wholesale.`;
+    const image = loaderData?.hero_image ?? undefined;
+    return {
+      meta: [
+        { title: `${name} — Noyis Africa` },
+        { name: "description", content: desc },
+        { property: "og:title", content: `${name} — Noyis Africa` },
+        { property: "og:description", content: desc },
+        { property: "og:type", content: "product" },
+        { property: "og:url", content: `/products/${params.slug}` },
+        ...(image ? [{ property: "og:image", content: image }, { name: "twitter:image", content: image }] : []),
+      ],
+      links: [{ rel: "canonical", href: `/products/${params.slug}` }],
+    };
+  },
   component: ProductPage,
   errorComponent: ({ error }) => <div className="p-8 text-destructive">{error.message}</div>,
   notFoundComponent: () => (
