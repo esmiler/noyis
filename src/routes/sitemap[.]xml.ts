@@ -3,16 +3,16 @@ import type {} from "@tanstack/react-start";
 import { listProductSlugs } from "@/lib/products.functions";
 import { listGuideSlugs } from "@/lib/guides.functions";
 
-const BASE_URL = "";
+const BASE_URL = "https://noyisafrica.com";
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const staticPaths = ["/", "/products", "/wholesale", "/contact", "/store-locator", "/guides", "/auth"];
+        const staticPaths = ["/", "/treasure", "/products", "/wholesale", "/contact", "/store-locator", "/guides", "/auth"];
         const [products, guides] = await Promise.all([listProductSlugs(), listGuideSlugs()]);
         const urls = [
-          ...staticPaths.map((p) => `<url><loc>${BASE_URL}${p}</loc><changefreq>weekly</changefreq></url>`),
+          ...staticPaths.map((p) => `<url><loc>${BASE_URL}${p}</loc><changefreq>weekly</changefreq>${p === "/treasure" ? "<priority>1.0</priority>" : ""}</url>`),
           ...products.map(
             (p) =>
               `<url><loc>${BASE_URL}/products/${p.slug}</loc><lastmod>${p.updated_at}</lastmod><changefreq>weekly</changefreq></url>`,

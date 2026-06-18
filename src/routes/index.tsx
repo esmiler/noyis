@@ -162,7 +162,10 @@ function HomePage() {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90">
-                <Link to="/products" search={{ cat: "natural-wellness" }}>Shop the collection</Link>
+                <Link to="/treasure">Explore the Treasure collection</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-white/40 bg-white/10 text-white hover:bg-white/20">
+                <Link to="/products" search={{ cat: "natural-wellness" }}>Shop all products</Link>
               </Button>
             </div>
           </div>
