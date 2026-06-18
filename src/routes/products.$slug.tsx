@@ -61,7 +61,6 @@ function ProductPage() {
     offers: {
       "@type": "Offer",
       priceCurrency: "USD",
-      price: p.pricing_usd ?? undefined,
       availability: inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
     },
   };
