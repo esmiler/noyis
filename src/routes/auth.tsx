@@ -79,10 +79,7 @@ function AuthPage() {
             {busy ? "…" : mode === "signin" ? "Sign in" : "Create account"}
           </Button>
         </form>
-        <div className="mt-4 flex items-center justify-between text-xs">
-          <button type="button" onClick={() => setMode(mode === "signin" ? "signup" : "signin")} className="text-primary hover:underline">
-            {mode === "signin" ? "Need an account?" : "Have an account? Sign in"}
-          </button>
+        <div className="mt-4 flex items-center justify-end text-xs">
           <Link to="/" className="text-muted-foreground hover:text-foreground">← Back to site</Link>
         </div>
       </div>
