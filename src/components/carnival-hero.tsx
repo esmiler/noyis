@@ -149,7 +149,7 @@ export function CarnivalHero() {
                 decoding="async"
               />
               {/* Bottom darkening gradient for legibility under text */}
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/85 via-black/55 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
             </div>
           );
         })}
