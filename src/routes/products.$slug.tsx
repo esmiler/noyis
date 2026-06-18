@@ -61,7 +61,6 @@ function ProductPage() {
     offers: {
       "@type": "Offer",
       priceCurrency: "USD",
-      price: p.pricing_usd ?? undefined,
       availability: inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
     },
   };
@@ -93,30 +92,23 @@ function ProductPage() {
             <h1 className="mt-2 font-display text-4xl text-botanical">{name}</h1>
             <p className="mt-3 text-lg text-muted-foreground">{short}</p>
 
-            <div className="mt-6 flex items-center gap-4">
-              {p.pricing_usd != null && (
-                <div>
-                  <span className="font-display text-3xl font-semibold text-foreground">
-                    ${Number(p.pricing_usd).toFixed(2)}
-                  </span>
-                  <span className="ml-1 text-sm text-muted-foreground">USD</span>
-                  {p.pricing_xcd != null && (
-                    <span className="ml-3 text-sm text-muted-foreground">/ XCD ${Number(p.pricing_xcd).toFixed(2)}</span>
-                  )}
-                </div>
-              )}
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center rounded-full bg-sand px-3 py-1 text-xs font-semibold uppercase tracking-wider text-botanical">
+                {tr("price_on_request", lang)}
+              </span>
               <span
                 className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold ${inStock ? "bg-primary/10 text-primary" : "bg-destructive/10 text-destructive"}`}
               >
                 <Check className="h-3.5 w-3.5" /> {inStock ? tr("in_stock", lang) : tr("out_of_stock", lang)}
               </span>
             </div>
+            <p className="mt-2 text-sm text-muted-foreground">{tr("cart_quote_note", lang)}</p>
 
             <div className="mt-6 flex flex-wrap gap-3">
               {inStock ? (
                 <Button
                   size="lg"
-                  onClick={() => add({ slug: p.slug, name, price_usd: p.pricing_usd != null ? Number(p.pricing_usd) : null })}
+                  onClick={() => add({ slug: p.slug, name, price_usd: null })}
                   className="bg-primary text-primary-foreground hover:bg-botanical"
                 >
                   <ShoppingCart className="h-4 w-4" /> {tr("add_to_cart", lang)}

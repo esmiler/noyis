@@ -146,16 +146,34 @@ export const t: Dict = {
   footer_tagline: { en: "Your Health, Our Priority", es: "Tu Salud, Nuestra Prioridad", fr: "Votre Santé, Notre Priorité", pt: "Sua Saúde, Nossa Prioridade" },
 
   whatsapp_intro: {
-    en: "Hello Noyis Africa,\n\nI would like to order:",
-    es: "Hola Noyis Africa,\n\nMe gustaría pedir:",
-    fr: "Bonjour Noyis Africa,\n\nJe souhaite commander :",
-    pt: "Olá Noyis Africa,\n\nGostaria de pedir:",
+    en: "Hello Noyis Africa,\n\nI'd like to place an order for:",
+    es: "Hola Noyis Africa,\n\nMe gustaría hacer un pedido de:",
+    fr: "Bonjour Noyis Africa,\n\nJe souhaite passer commande pour :",
+    pt: "Olá Noyis Africa,\n\nGostaria de fazer um pedido de:",
   },
   whatsapp_outro: {
-    en: "\n\nPlease confirm availability and delivery options.\n\nThank you.",
-    es: "\n\nPor favor confirmen disponibilidad y opciones de entrega.\n\nGracias.",
-    fr: "\n\nMerci de confirmer la disponibilité et les options de livraison.\n\nMerci.",
-    pt: "\n\nPor favor confirmem disponibilidade e opções de entrega.\n\nObrigado.",
+    en: "\n\nPlease send me the total price for these items and the available delivery options.\n\nThank you!",
+    es: "\n\n¿Podrían enviarme el precio total y las opciones de entrega disponibles?\n\n¡Gracias!",
+    fr: "\n\nMerci de m'indiquer le prix total et les options de livraison disponibles.\n\nMerci !",
+    pt: "\n\nPor favor, me enviem o preço total e as opções de entrega disponíveis.\n\nObrigado!",
+  },
+  price_on_request: {
+    en: "Price confirmed on order",
+    es: "Precio confirmado al pedir",
+    fr: "Prix confirmé à la commande",
+    pt: "Preço confirmado no pedido",
+  },
+  request_quote: {
+    en: "Request Quote on WhatsApp",
+    es: "Solicitar precio por WhatsApp",
+    fr: "Demander un devis sur WhatsApp",
+    pt: "Solicitar orçamento no WhatsApp",
+  },
+  cart_quote_note: {
+    en: "We'll confirm the total price and delivery options with you on WhatsApp.",
+    es: "Confirmaremos el precio total y las opciones de entrega por WhatsApp.",
+    fr: "Nous confirmerons le prix total et la livraison sur WhatsApp.",
+    pt: "Confirmaremos o preço total e a entrega pelo WhatsApp.",
   },
 };
 

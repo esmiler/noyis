@@ -54,28 +54,19 @@ export function ProductCard({ product }: { product: ProductLike }) {
         </Link>
         <p className="line-clamp-2 text-sm text-muted-foreground">{short}</p>
 
-        <div className="mt-auto flex items-end justify-between pt-3">
-          {product.pricing_usd != null ? (
-            <div>
-              <p className="font-display text-xl font-semibold text-foreground">
-                ${product.pricing_usd.toFixed(2)}
-                <span className="ml-1 text-xs font-normal text-muted-foreground">USD</span>
-              </p>
-              {product.pricing_xcd != null && (
-                <p className="text-xs text-muted-foreground">XCD ${Number(product.pricing_xcd).toFixed(2)}</p>
-              )}
-            </div>
-          ) : (
-            <span className="text-sm text-muted-foreground">Contact for pricing</span>
-          )}
+        <div className="mt-auto flex items-end justify-between gap-3 pt-3">
+          <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+            {tr("price_on_request", lang)}
+          </p>
 
           {inStock ? (
             <Button
               size="sm"
               onClick={() =>
-                add({ slug: product.slug, name, price_usd: product.pricing_usd })
+                add({ slug: product.slug, name, price_usd: null })
               }
               className="bg-primary text-primary-foreground hover:bg-botanical"
+              aria-label={tr("add_to_cart", lang)}
             >
               <ShoppingCart className="h-4 w-4" />
             </Button>

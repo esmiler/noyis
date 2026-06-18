@@ -7,7 +7,7 @@ import { Minus, Plus, Trash2 } from "lucide-react";
 import { buildWhatsAppMessage, whatsAppUrl } from "@/lib/whatsapp";
 
 export function CartSheet({ open, onOpenChange }: { open: boolean; onOpenChange: (o: boolean) => void }) {
-  const { items, setQty, remove, clear, total } = useCart();
+  const { items, setQty, remove, clear } = useCart();
   const { lang } = useLang();
 
   const handleSend = () => {
@@ -36,9 +36,6 @@ export function CartSheet({ open, onOpenChange }: { open: boolean; onOpenChange:
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0">
                       <p className="truncate font-medium text-foreground">{i.name}</p>
-                      {i.price_usd ? (
-                        <p className="text-sm text-muted-foreground">USD ${i.price_usd.toFixed(2)}</p>
-                      ) : null}
                     </div>
                     <button
                       onClick={() => remove(i.slug)}
@@ -73,10 +70,9 @@ export function CartSheet({ open, onOpenChange }: { open: boolean; onOpenChange:
 
         {items.length > 0 && (
           <div className="border-t border-border bg-sand px-6 py-4">
-            <div className="mb-3 flex items-center justify-between text-sm">
-              <span className="text-muted-foreground">Total (USD)</span>
-              <span className="font-display text-xl text-botanical">${total.toFixed(2)}</span>
-            </div>
+            <p className="mb-3 text-xs leading-relaxed text-muted-foreground">
+              {tr("cart_quote_note", lang)}
+            </p>
             <Button onClick={handleSend} className="w-full bg-primary text-primary-foreground hover:bg-botanical">
               {tr("cart_send_whatsapp", lang)}
             </Button>
