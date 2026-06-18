@@ -1,60 +1,31 @@
-## What's already in place
+## Goal
+Automate Google Search Console verification for `noyisafrica.com` using the connector (Option A), then submit the sitemap.
 
-- **Sitemap**: live at `/sitemap.xml` (server route), lists `/`, `/treasure`, all products and guides — ready to submit to Google Search Console.
-- **robots.txt**: allows all crawlers (Google, Bing, GPTBot, ClaudeBot, PerplexityBot, Google-Extended).
-- **Structured data**: `Organization` + `LocalBusiness` (Lower Nevis Street, St. John's, AG) + `WebSite` JSON-LD already on every page via `__root.tsx`. Treasure page has Product + FAQ + Breadcrumb JSON-LD.
-- **Per-page SEO**: `/`, `/treasure`, `/products`, `/guides`, `/store-locator` etc. each have their own title, description, og tags, canonical.
-- **Hreflang**: present on `/treasure` only (en/es/fr/x-default).
-- **Geo signals on `/treasure`**: `geo.region=AG`, `geo.placename=St. John's, Antigua`.
+## Steps
 
-## What the advice says vs. what only you can do
+1. **Link the Google Search Console connector**
+   - Prompt the user to connect their Google account via the connector UI.
+   - Once linked, the connector secrets become available to the project.
 
-Three things he recommends. Two are code, one is not:
+2. **Request a verification token**
+   - Call the Google Site Verification API via the connector gateway to get a `google-site-verification` meta token for `https://noyisafrica.com/`.
 
-1. **Google Search Console verification + sitemap submit** — needs code (meta tag) + you clicking "Submit sitemap" in GSC. I can do the verification via the Google Search Console connector if you link it; otherwise I just drop in a verification meta tag you paste from GSC.
-2. **Hreflang on every page** — pure code, I'll do it.
-3. **Google Business Profile for "Lower Nevis Street, St. John's, Antigua"** — **cannot be done from code**. You have to claim/verify it at business.google.com yourself. The `LocalBusiness` JSON-LD in your site already mirrors the same address so Google can cross-reference once GBP is live.
+3. **Inject the meta tag**
+   - Add `<meta name="google-site-verification" content="<token>" />` to the `<head>` of `src/routes/__root.tsx` so it appears on every page.
 
-## Changes I'll make
+4. **Verify the site**
+   - Call the Site Verification API again via the connector gateway to tell Google to verify the meta tag.
 
-### 1. Sitewide hreflang + geo meta in `src/routes/__root.tsx`
+5. **Add the property to Search Console**
+   - Call the Search Console API via the connector gateway to add `https://noyisafrica.com/` as a managed property.
 
-Add to the root `head().links` (applies to every page):
+6. **Submit the sitemap**
+   - Submit `https://noyisafrica.com/sitemap.xml` to Search Console via the connector gateway.
 
-```ts
-{ rel: "alternate", hrefLang: "en", href: "https://noyisafrica.com" },
-{ rel: "alternate", hrefLang: "es", href: "https://noyisafrica.com" },
-{ rel: "alternate", hrefLang: "fr", href: "https://noyisafrica.com" },
-{ rel: "alternate", hrefLang: "pt", href: "https://noyisafrica.com" },
-{ rel: "alternate", hrefLang: "x-default", href: "https://noyisafrica.com" },
-```
+## Google Business Profile (already claimed)
 
-Add to root `meta`:
+There is no additional code integration needed. Since you already claimed the profile at **Lower Nevis Street, St. John's** and added `https://noyisafrica.com` as the website URL, Google already links the two. The `LocalBusiness` JSON-LD structured data on every page mirrors the same address and phone number, which helps Google cross-reference and display the profile in local/map results. Just make sure the website field in your GBP dashboard is exactly `https://noyisafrica.com`.
 
-```ts
-{ name: "geo.region", content: "AG" },
-{ name: "geo.placename", content: "St. John's, Antigua and Barbuda" },
-{ name: "geo.position", content: "17.1175;-61.8456" },
-{ name: "ICBM", content: "17.1175, -61.8456" },
-```
+## What you need to do
 
-Caveat: hreflang technically should point to language-specific URLs. Since the site is a single-URL multi-language app (language toggle in `LangProvider`), pointing all variants at the same canonical is acceptable and tells Google the page serves multiple languages — it's what the advice is asking for. Real language-specific URLs (`/es/...`, `/fr/...`) would be a much bigger rework; flag that as a future option.
-
-### 2. Google Search Console verification (pick one)
-
-**Option A — link the Google Search Console connector** (preferred). I run the verification flow end-to-end: request the meta token, inject it into `__root.tsx`, call verify, then add `noyisafrica.com` as a property. You only click the connector approval.
-
-**Option B — manual.** You go to search.google.com/search-console, add `noyisafrica.com`, choose the HTML meta tag method, paste the tag to me, I add it to `__root.tsx`, you click Verify, then click "Submit sitemap" → `sitemap.xml`.
-
-### 3. What I will NOT do unless you ask
-
-- Add `<link rel="alternate">` per-language-URL — would require a `/es`, `/fr`, `/pt` route split.
-- Touch the Treasure page hreflang (already correct).
-- Add a Google Business Profile — only you can claim that.
-
-## After the changes, you should
-
-1. Submit `https://noyisafrica.com/sitemap.xml` in GSC → Sitemaps.
-2. In GSC → Settings → International Targeting is gone in the new UI; targeting comes from hreflang + GBP signals, both handled above.
-3. Create/verify Google Business Profile for Lower Nevis Street, St. John's — this is the biggest single lever for "Antigua" foot traffic + AI/maps mentions.
-4. Give it 2–4 weeks as the analyst said. The India/Turkey/Jamaica hits are bots + initial crawler sweeps — expected on a freshly-launched site.
+- Approve the connector link when prompted (Step 1). The rest is handled automatically by the agent.
