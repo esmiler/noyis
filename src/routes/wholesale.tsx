@@ -17,6 +17,23 @@ export const Route = createFileRoute("/wholesale")({
     meta: [
       { title: "Wholesale Distribution — Noyis Africa" },
       { name: "description", content: "Bulk cartons and pallets of Coca-Cola, Malta, juices and Caribbean wellness products. Supplying distributors and retailers across the Caribbean." },
+      { property: "og:title", content: "Wholesale Distribution — Noyis Africa" },
+      { property: "og:description", content: "Bulk cartons and pallets for distributors and retailers across the Caribbean." },
+      { property: "og:url", content: "/wholesale" },
+    ],
+    links: [{ rel: "canonical", href: "/wholesale" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Wholesale Distribution — Noyis Africa",
+          description: "Bulk cartons and pallets for distributors and retailers across the Caribbean.",
+          url: "/wholesale",
+          provider: { "@type": "Organization", name: "Noyis Africa" },
+        }),
+      },
     ],
   }),
   loader: async ({ context }) => context.queryClient.ensureQueryData(wholesaleQuery),
