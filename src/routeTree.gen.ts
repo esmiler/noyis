@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WholesaleRouteImport } from './routes/wholesale'
+import { Route as TreasureRouteImport } from './routes/treasure'
 import { Route as StoreLocatorRouteImport } from './routes/store-locator'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProductsRouteImport } from './routes/products'
@@ -26,6 +27,11 @@ import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/e
 const WholesaleRoute = WholesaleRouteImport.update({
   id: '/wholesale',
   path: '/wholesale',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TreasureRoute = TreasureRouteImport.update({
+  id: '/treasure',
+  path: '/treasure',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StoreLocatorRoute = StoreLocatorRouteImport.update({
@@ -97,6 +103,7 @@ export interface FileRoutesByFullPath {
   '/products': typeof ProductsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/store-locator': typeof StoreLocatorRoute
+  '/treasure': typeof TreasureRoute
   '/wholesale': typeof WholesaleRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/guides/$slug': typeof GuidesSlugRoute
@@ -111,6 +118,7 @@ export interface FileRoutesByTo {
   '/products': typeof ProductsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/store-locator': typeof StoreLocatorRoute
+  '/treasure': typeof TreasureRoute
   '/wholesale': typeof WholesaleRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/guides/$slug': typeof GuidesSlugRoute
@@ -127,6 +135,7 @@ export interface FileRoutesById {
   '/products': typeof ProductsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/store-locator': typeof StoreLocatorRoute
+  '/treasure': typeof TreasureRoute
   '/wholesale': typeof WholesaleRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/guides/$slug': typeof GuidesSlugRoute
@@ -143,6 +152,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/sitemap.xml'
     | '/store-locator'
+    | '/treasure'
     | '/wholesale'
     | '/admin'
     | '/guides/$slug'
@@ -157,6 +167,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/sitemap.xml'
     | '/store-locator'
+    | '/treasure'
     | '/wholesale'
     | '/admin'
     | '/guides/$slug'
@@ -172,6 +183,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/sitemap.xml'
     | '/store-locator'
+    | '/treasure'
     | '/wholesale'
     | '/_authenticated/admin'
     | '/guides/$slug'
@@ -188,6 +200,7 @@ export interface RootRouteChildren {
   ProductsRoute: typeof ProductsRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StoreLocatorRoute: typeof StoreLocatorRoute
+  TreasureRoute: typeof TreasureRoute
   WholesaleRoute: typeof WholesaleRoute
   LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
 }
@@ -199,6 +212,13 @@ declare module '@tanstack/react-router' {
       path: '/wholesale'
       fullPath: '/wholesale'
       preLoaderRoute: typeof WholesaleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/treasure': {
+      id: '/treasure'
+      path: '/treasure'
+      fullPath: '/treasure'
+      preLoaderRoute: typeof TreasureRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/store-locator': {
@@ -331,6 +351,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsRoute: ProductsRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StoreLocatorRoute: StoreLocatorRoute,
+  TreasureRoute: TreasureRoute,
   WholesaleRoute: WholesaleRoute,
   LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
 }
