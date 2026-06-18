@@ -7,9 +7,13 @@ import storefront from "@/assets/noyis-storefront.png.asset.json";
 export const Route = createFileRoute("/store-locator")({
   head: () => ({
     meta: [
-      { title: "Visit Our Warehouse — Noyis Africa, St. John's, Antigua" },
+      { title: "Visit Our Warehouse — Noyis Africa, Antigua" },
       { name: "description", content: "Find Noyis Africa wholesale & retail warehouse on Lower Nevis Street, St. John's, Antigua. Business hours, directions, contact." },
+      { property: "og:title", content: "Visit Our Warehouse — Noyis Africa" },
+      { property: "og:description", content: "Lower Nevis Street, St. John's, Antigua. Business hours, directions, contact." },
+      { property: "og:url", content: "/store-locator" },
     ],
+    links: [{ rel: "canonical", href: "/store-locator" }],
   }),
   component: LocatorPage,
   errorComponent: ({ error }) => <div className="p-8 text-destructive">{error.message}</div>,
