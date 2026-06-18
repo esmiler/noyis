@@ -129,7 +129,7 @@ function GuideDetail() {
         )}
         <div
           className="prose prose-neutral mt-10 max-w-none prose-headings:font-display prose-headings:text-botanical prose-a:text-primary"
-          dangerouslySetInnerHTML={{ __html: localized(data.body_localized, lang) }}
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(String(localized(data.body_localized, lang) ?? ""), SANITIZE_CONFIG) }}
         />
 
         {faq.length > 0 && (
