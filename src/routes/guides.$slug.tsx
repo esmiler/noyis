@@ -6,6 +6,17 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { useLang } from "@/components/lang-context";
 import { localized } from "@/lib/i18n";
+import DOMPurify from "isomorphic-dompurify";
+
+const SANITIZE_CONFIG = {
+  ALLOWED_TAGS: [
+    "h1","h2","h3","h4","h5","h6","p","br","hr","strong","em","b","i","u","s",
+    "ul","ol","li","blockquote","code","pre","a","img","figure","figcaption",
+    "table","thead","tbody","tr","th","td","span","div",
+  ],
+  ALLOWED_ATTR: ["href","title","alt","src","target","rel","class","id"],
+  ALLOWED_URI_REGEXP: /^(?:https?:|mailto:|tel:|\/|#)/i,
+};
 
 const guideQuery = (slug: string) =>
   queryOptions({
@@ -118,7 +129,7 @@ function GuideDetail() {
         )}
         <div
           className="prose prose-neutral mt-10 max-w-none prose-headings:font-display prose-headings:text-botanical prose-a:text-primary"
-          dangerouslySetInnerHTML={{ __html: localized(data.body_localized, lang) }}
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(String(localized(data.body_localized, lang) ?? ""), SANITIZE_CONFIG) }}
         />
 
         {faq.length > 0 && (

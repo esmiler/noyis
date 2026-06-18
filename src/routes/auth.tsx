@@ -19,7 +19,6 @@ export const Route = createFileRoute("/auth")({
 
 function AuthPage() {
   const navigate = useNavigate();
-  const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
@@ -34,18 +33,8 @@ function AuthPage() {
     e.preventDefault();
     setBusy(true);
     try {
-      if (mode === "signin") {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error;
-      } else {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: { emailRedirectTo: window.location.origin + "/admin" },
-        });
-        if (error) throw error;
-        toast.success("Account created. Check your email if confirmation is required.");
-      }
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) throw error;
       navigate({ to: "/admin" });
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Authentication failed");
@@ -61,9 +50,7 @@ function AuthPage() {
           <img src={logoAsset.url} alt="" className="h-12 w-12" />
           <div>
             <h1 className="font-display text-2xl font-semibold">Noyis Africa Admin</h1>
-            <p className="text-sm text-muted-foreground">
-              {mode === "signin" ? "Sign in to manage the catalog" : "Create an admin account"}
-            </p>
+            <p className="text-sm text-muted-foreground">Sign in to manage the catalog</p>
           </div>
         </div>
         <form onSubmit={submit} className="space-y-4">
@@ -73,16 +60,13 @@ function AuthPage() {
           </div>
           <div>
             <Label htmlFor="password">Password</Label>
-            <Input id="password" type="password" required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} autoComplete={mode === "signin" ? "current-password" : "new-password"} />
+            <Input id="password" type="password" required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" />
           </div>
           <Button type="submit" disabled={busy} className="w-full">
-            {busy ? "…" : mode === "signin" ? "Sign in" : "Create account"}
+            {busy ? "…" : "Sign in"}
           </Button>
         </form>
-        <div className="mt-4 flex items-center justify-between text-xs">
-          <button type="button" onClick={() => setMode(mode === "signin" ? "signup" : "signin")} className="text-primary hover:underline">
-            {mode === "signin" ? "Need an account?" : "Have an account? Sign in"}
-          </button>
+        <div className="mt-4 flex items-center justify-end text-xs">
           <Link to="/" className="text-muted-foreground hover:text-foreground">← Back to site</Link>
         </div>
       </div>
