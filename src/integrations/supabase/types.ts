@@ -101,6 +101,60 @@ export type Database = {
         }
         Relationships: []
       }
+      guides: {
+        Row: {
+          author: string | null
+          body_localized: Json
+          category: string | null
+          created_at: string
+          excerpt_localized: Json
+          faq_localized: Json
+          hero_image: string | null
+          id: string
+          published: boolean
+          reading_minutes: number
+          slug: string
+          sort_order: number
+          tags: string[]
+          title_localized: Json
+          updated_at: string
+        }
+        Insert: {
+          author?: string | null
+          body_localized?: Json
+          category?: string | null
+          created_at?: string
+          excerpt_localized?: Json
+          faq_localized?: Json
+          hero_image?: string | null
+          id?: string
+          published?: boolean
+          reading_minutes?: number
+          slug: string
+          sort_order?: number
+          tags?: string[]
+          title_localized?: Json
+          updated_at?: string
+        }
+        Update: {
+          author?: string | null
+          body_localized?: Json
+          category?: string | null
+          created_at?: string
+          excerpt_localized?: Json
+          faq_localized?: Json
+          hero_image?: string | null
+          id?: string
+          published?: boolean
+          reading_minutes?: number
+          slug?: string
+          sort_order?: number
+          tags?: string[]
+          title_localized?: Json
+          updated_at?: string
+        }
+        Relationships: []
+      }
       product_analytics: {
         Row: {
           created_at: string
