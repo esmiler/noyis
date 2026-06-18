@@ -86,6 +86,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "Noyis Discover is a global visibility-first commerce platform for product discovery and WhatsApp-based ordering." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/baa700c2-899b-4ce0-8faf-04c8d3fb6be2/id-preview-285c4aae--c2a009fe-1583-496f-92d0-360688840a19.lovable.app-1781749935041.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/baa700c2-899b-4ce0-8faf-04c8d3fb6be2/id-preview-285c4aae--c2a009fe-1583-496f-92d0-360688840a19.lovable.app-1781749935041.png" },
+      { name: "geo.region", content: "AG" },
+      { name: "geo.placename", content: "St. John's, Antigua and Barbuda" },
+      { name: "geo.position", content: "17.1175;-61.8456" },
+      { name: "ICBM", content: "17.1175, -61.8456" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -95,7 +99,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap",
       },
+      { rel: "alternate", hrefLang: "en", href: "https://noyisafrica.com" },
+      { rel: "alternate", hrefLang: "es", href: "https://noyisafrica.com" },
+      { rel: "alternate", hrefLang: "fr", href: "https://noyisafrica.com" },
+      { rel: "alternate", hrefLang: "pt", href: "https://noyisafrica.com" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://noyisafrica.com" },
     ],
+
     scripts: [
       {
         type: "application/ld+json",
