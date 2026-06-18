@@ -108,7 +108,7 @@ function ProductPage() {
               {inStock ? (
                 <Button
                   size="lg"
-                  onClick={() => add({ slug: p.slug, name, price_usd: p.pricing_usd != null ? Number(p.pricing_usd) : null })}
+                  onClick={() => add({ slug: p.slug, name, price_usd: null })}
                   className="bg-primary text-primary-foreground hover:bg-botanical"
                 >
                   <ShoppingCart className="h-4 w-4" /> {tr("add_to_cart", lang)}
