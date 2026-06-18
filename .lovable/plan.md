@@ -1,48 +1,60 @@
+## What's already in place
 
-## Goal
+- **Sitemap**: live at `/sitemap.xml` (server route), lists `/`, `/treasure`, all products and guides — ready to submit to Google Search Console.
+- **robots.txt**: allows all crawlers (Google, Bing, GPTBot, ClaudeBot, PerplexityBot, Google-Extended).
+- **Structured data**: `Organization` + `LocalBusiness` (Lower Nevis Street, St. John's, AG) + `WebSite` JSON-LD already on every page via `__root.tsx`. Treasure page has Product + FAQ + Breadcrumb JSON-LD.
+- **Per-page SEO**: `/`, `/treasure`, `/products`, `/guides`, `/store-locator` etc. each have their own title, description, og tags, canonical.
+- **Hreflang**: present on `/treasure` only (en/es/fr/x-default).
+- **Geo signals on `/treasure`**: `geo.region=AG`, `geo.placename=St. John's, Antigua`.
 
-Lock the `/admin` dashboard behind a one-time email token sent to **esmailmalik86@gmail.com** (super admin). Once inside, the super admin can grant other users `editor` / `viewer` privileges to manage products, prices, guides, etc.
+## What the advice says vs. what only you can do
 
-## How access will work (user-facing)
+Three things he recommends. Two are code, one is not:
 
-1. User signs in normally at `/auth` (email + password).
-2. On hitting `/admin`, if they don't already have a valid admin session token, they're shown a "Request access code" screen.
-3. Clicking the button emails a 6-digit code (valid 10 min, single-use) **only to esmailmalik86@gmail.com** — no matter who clicked.
-4. The super admin enters the code → gets a signed admin session (httpOnly cookie, 8 h) → dashboard unlocks.
-5. Inside the dashboard, an existing "Users" tab lets the super admin grant `admin`, `editor`, or `viewer` roles to other signed-in users. Those users skip the email-code step (their role already grants access) but still need to be signed in.
+1. **Google Search Console verification + sitemap submit** — needs code (meta tag) + you clicking "Submit sitemap" in GSC. I can do the verification via the Google Search Console connector if you link it; otherwise I just drop in a verification meta tag you paste from GSC.
+2. **Hreflang on every page** — pure code, I'll do it.
+3. **Google Business Profile for "Lower Nevis Street, St. John's, Antigua"** — **cannot be done from code**. You have to claim/verify it at business.google.com yourself. The `LocalBusiness` JSON-LD in your site already mirrors the same address so Google can cross-reference once GBP is live.
 
-Super admin = the single account whose email is `esmailmalik86@gmail.com`. Bootstrapping: first time that email signs up / signs in, they're auto-granted the `admin` role (replaces the current "Claim first-admin" button).
+## Changes I'll make
 
-## What gets built
+### 1. Sitewide hreflang + geo meta in `src/routes/__root.tsx`
 
-**Database (1 migration)**
-- New table `admin_access_codes` (code_hash, expires_at, used_at, requested_by_user_id) with RLS — service role only.
-- Settings row `super_admin_email = 'esmailmalik86@gmail.com'`.
-- Trigger on `auth.users` insert: if email matches super admin email, insert `admin` role automatically.
+Add to the root `head().links` (applies to every page):
 
-**Email delivery**
-- Use Lovable Emails (built-in). Requires an email domain — if none configured yet, the setup dialog will appear once and the rest continues automatically.
-- New React Email template `admin-access-code.tsx` (branded, shows the 6-digit code, expiry, "ignore if you didn't request this").
-- Hard-coded recipient = super admin email from settings (never the requester's email).
+```ts
+{ rel: "alternate", hrefLang: "en", href: "https://noyisafrica.com" },
+{ rel: "alternate", hrefLang: "es", href: "https://noyisafrica.com" },
+{ rel: "alternate", hrefLang: "fr", href: "https://noyisafrica.com" },
+{ rel: "alternate", hrefLang: "pt", href: "https://noyisafrica.com" },
+{ rel: "alternate", hrefLang: "x-default", href: "https://noyisafrica.com" },
+```
 
-**Server functions (`src/lib/admin-access.functions.ts`)**
-- `requestAdminCode()` — auth required; generates code, stores hash, emails super admin. Rate-limited (max 1 per 60 s, 5 per hour).
-- `verifyAdminCode({ code })` — checks hash + expiry, marks used, sets `noyis_admin_session` httpOnly signed cookie (8 h). Only succeeds if caller's email == super admin email OR caller already has `admin`/`editor`/`viewer` role.
-- `revokeAdminSession()` — clears cookie.
+Add to root `meta`:
 
-**Route protection**
-- Update `src/routes/_authenticated/route.tsx` (or add `_authenticated/admin` guard) to additionally require: valid admin-session cookie **OR** user has a role in `user_roles`. Otherwise redirect to a new `/admin/unlock` page that shows the request-code / enter-code UI.
-- Existing per-table RLS already enforces editor/admin writes — no change.
+```ts
+{ name: "geo.region", content: "AG" },
+{ name: "geo.placename", content: "St. John's, Antigua and Barbuda" },
+{ name: "geo.position", content: "17.1175;-61.8456" },
+{ name: "ICBM", content: "17.1175, -61.8456" },
+```
 
-**Admin UI tweaks**
-- Remove the "Claim first-admin role" button (replaced by the trigger).
-- Add a small "Lock dashboard" button in the header that calls `revokeAdminSession`.
-- Users tab unchanged in shape; it already supports role assignment.
+Caveat: hreflang technically should point to language-specific URLs. Since the site is a single-URL multi-language app (language toggle in `LangProvider`), pointing all variants at the same canonical is acceptable and tells Google the page serves multiple languages — it's what the advice is asking for. Real language-specific URLs (`/es/...`, `/fr/...`) would be a much bigger rework; flag that as a future option.
 
-## Out of scope
-- SMS / TOTP / hardware-key MFA.
-- Changing the super admin email through the UI (it lives in `settings` and can be edited via SQL if ever needed).
+### 2. Google Search Console verification (pick one)
 
-## Confirm before I build
-1. **Email domain**: do you already have one configured in Lovable, or should I trigger the setup dialog as part of this work?
-2. **Privileged roles for non-super-admins**: should `editor` and `viewer` users *also* be required to enter an email code each session (which would still go to esmailmalik86@gmail.com), or skip the code once they have a role assigned (my current plan)?
+**Option A — link the Google Search Console connector** (preferred). I run the verification flow end-to-end: request the meta token, inject it into `__root.tsx`, call verify, then add `noyisafrica.com` as a property. You only click the connector approval.
+
+**Option B — manual.** You go to search.google.com/search-console, add `noyisafrica.com`, choose the HTML meta tag method, paste the tag to me, I add it to `__root.tsx`, you click Verify, then click "Submit sitemap" → `sitemap.xml`.
+
+### 3. What I will NOT do unless you ask
+
+- Add `<link rel="alternate">` per-language-URL — would require a `/es`, `/fr`, `/pt` route split.
+- Touch the Treasure page hreflang (already correct).
+- Add a Google Business Profile — only you can claim that.
+
+## After the changes, you should
+
+1. Submit `https://noyisafrica.com/sitemap.xml` in GSC → Sitemaps.
+2. In GSC → Settings → International Targeting is gone in the new UI; targeting comes from hreflang + GBP signals, both handled above.
+3. Create/verify Google Business Profile for Lower Nevis Street, St. John's — this is the biggest single lever for "Antigua" foot traffic + AI/maps mentions.
+4. Give it 2–4 weeks as the analyst said. The India/Turkey/Jamaica hits are bots + initial crawler sweeps — expected on a freshly-launched site.
