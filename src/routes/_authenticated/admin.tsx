@@ -165,7 +165,9 @@ function AdminPage() {
             <TabsList className="flex flex-wrap">
               <TabsTrigger value="products">Products</TabsTrigger>
               <TabsTrigger value="categories">Categories</TabsTrigger>
+              <TabsTrigger value="guides">Guides</TabsTrigger>
               <TabsTrigger value="faqs">FAQs</TabsTrigger>
+              <TabsTrigger value="analytics">Analytics</TabsTrigger>
               <TabsTrigger value="settings">Settings</TabsTrigger>
               {isAdmin && <TabsTrigger value="users">Users</TabsTrigger>}
             </TabsList>
@@ -175,8 +177,14 @@ function AdminPage() {
             <TabsContent value="categories" className="mt-4">
               <CategoriesAdmin />
             </TabsContent>
+            <TabsContent value="guides" className="mt-4">
+              <GuidesAdmin />
+            </TabsContent>
             <TabsContent value="faqs" className="mt-4">
               <FaqsAdmin />
+            </TabsContent>
+            <TabsContent value="analytics" className="mt-4">
+              <AnalyticsAdmin />
             </TabsContent>
             <TabsContent value="settings" className="mt-4">
               <SettingsAdmin />

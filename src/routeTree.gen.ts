@@ -13,11 +13,13 @@ import { Route as WholesaleRouteImport } from './routes/wholesale'
 import { Route as StoreLocatorRouteImport } from './routes/store-locator'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProductsRouteImport } from './routes/products'
+import { Route as GuidesRouteImport } from './routes/guides'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
+import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 
 const WholesaleRoute = WholesaleRouteImport.update({
@@ -38,6 +40,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesRoute = GuidesRouteImport.update({
+  id: '/guides',
+  path: '/guides',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -64,6 +71,11 @@ const ProductsSlugRoute = ProductsSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ProductsRoute,
 } as any)
+const GuidesSlugRoute = GuidesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => GuidesRoute,
+} as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -74,22 +86,26 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/guides': typeof GuidesRouteWithChildren
   '/products': typeof ProductsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/store-locator': typeof StoreLocatorRoute
   '/wholesale': typeof WholesaleRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/guides': typeof GuidesRouteWithChildren
   '/products': typeof ProductsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/store-locator': typeof StoreLocatorRoute
   '/wholesale': typeof WholesaleRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRoutesById {
@@ -98,11 +114,13 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/guides': typeof GuidesRouteWithChildren
   '/products': typeof ProductsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/store-locator': typeof StoreLocatorRoute
   '/wholesale': typeof WholesaleRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRouteTypes {
@@ -111,22 +129,26 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/contact'
+    | '/guides'
     | '/products'
     | '/sitemap.xml'
     | '/store-locator'
     | '/wholesale'
     | '/admin'
+    | '/guides/$slug'
     | '/products/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/auth'
     | '/contact'
+    | '/guides'
     | '/products'
     | '/sitemap.xml'
     | '/store-locator'
     | '/wholesale'
     | '/admin'
+    | '/guides/$slug'
     | '/products/$slug'
   id:
     | '__root__'
@@ -134,11 +156,13 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/contact'
+    | '/guides'
     | '/products'
     | '/sitemap.xml'
     | '/store-locator'
     | '/wholesale'
     | '/_authenticated/admin'
+    | '/guides/$slug'
     | '/products/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -147,6 +171,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
+  GuidesRoute: typeof GuidesRouteWithChildren
   ProductsRoute: typeof ProductsRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StoreLocatorRoute: typeof StoreLocatorRoute
@@ -181,6 +206,13 @@ declare module '@tanstack/react-router' {
       path: '/products'
       fullPath: '/products'
       preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides': {
+      id: '/guides'
+      path: '/guides'
+      fullPath: '/guides'
+      preLoaderRoute: typeof GuidesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -218,6 +250,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsSlugRouteImport
       parentRoute: typeof ProductsRoute
     }
+    '/guides/$slug': {
+      id: '/guides/$slug'
+      path: '/$slug'
+      fullPath: '/guides/$slug'
+      preLoaderRoute: typeof GuidesSlugRouteImport
+      parentRoute: typeof GuidesRoute
+    }
     '/_authenticated/admin': {
       id: '/_authenticated/admin'
       path: '/admin'
@@ -239,6 +278,17 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
 const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
+interface GuidesRouteChildren {
+  GuidesSlugRoute: typeof GuidesSlugRoute
+}
+
+const GuidesRouteChildren: GuidesRouteChildren = {
+  GuidesSlugRoute: GuidesSlugRoute,
+}
+
+const GuidesRouteWithChildren =
+  GuidesRoute._addFileChildren(GuidesRouteChildren)
+
 interface ProductsRouteChildren {
   ProductsSlugRoute: typeof ProductsSlugRoute
 }
@@ -256,6 +306,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
+  GuidesRoute: GuidesRouteWithChildren,
   ProductsRoute: ProductsRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StoreLocatorRoute: StoreLocatorRoute,
