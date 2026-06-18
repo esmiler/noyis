@@ -7,7 +7,7 @@ import { Minus, Plus, Trash2 } from "lucide-react";
 import { buildWhatsAppMessage, whatsAppUrl } from "@/lib/whatsapp";
 
 export function CartSheet({ open, onOpenChange }: { open: boolean; onOpenChange: (o: boolean) => void }) {
-  const { items, setQty, remove, clear, total } = useCart();
+  const { items, setQty, remove, clear } = useCart();
   const { lang } = useLang();
 
   const handleSend = () => {
