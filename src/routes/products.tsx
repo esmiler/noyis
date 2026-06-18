@@ -35,6 +35,22 @@ export const Route = createFileRoute("/products")({
     meta: [
       { title: "All Products — Noyis Africa" },
       { name: "description", content: "Browse herbal wellness formulas, functional beverages and wholesale cartons from Noyis Africa." },
+      { property: "og:title", content: "All Products — Noyis Africa" },
+      { property: "og:description", content: "Herbal wellness formulas, functional beverages and wholesale cartons." },
+      { property: "og:url", content: "/products" },
+    ],
+    links: [{ rel: "canonical", href: "/products" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "All Products — Noyis Africa",
+          description: "Herbal wellness formulas, functional beverages and wholesale cartons from Noyis Africa.",
+          url: "/products",
+        }),
+      },
     ],
   }),
   component: ProductsPage,
