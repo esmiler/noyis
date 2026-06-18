@@ -29,7 +29,7 @@ export function ProductCard({ product }: { product: ProductLike }) {
       <Link to="/products/$slug" params={{ slug: product.slug }} className="block">
         <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-sand to-stone">
           {product.hero_image ? (
-            <img src={product.hero_image} alt={name} className="h-full w-full object-cover" loading="lazy" />
+            <img src={product.hero_image} alt={name} className="h-full w-full object-contain p-4" loading="lazy" />
           ) : (
             <Leaf className="h-16 w-16 text-primary/40" aria-hidden />
           )}
