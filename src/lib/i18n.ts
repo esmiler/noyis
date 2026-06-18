@@ -254,6 +254,131 @@ export const t: Dict = {
     fr: "Formulé avec des extraits botaniques des Caraïbes pour soutenir la récupération après une déshydratation intense.",
     pt: "Formulado com extratos botânicos caribenhos para apoiar a recuperação de desidratação intensa.",
   },
+
+  slide1_title: {
+    en: "Your Health, Our Priority",
+    es: "Tu Salud, Nuestra Prioridad",
+    fr: "Votre Santé, Notre Priorité",
+    pt: "Sua Saúde, Nossa Prioridade",
+  },
+  slide1_sub: {
+    en: "Experience 100% pure natural Caribbean distribution and premium holistic wellness formulas inspired by nature.",
+    es: "Vive la distribución 100% natural caribeña y fórmulas holísticas premium inspiradas en la naturaleza.",
+    fr: "Découvrez la distribution caribéenne 100% naturelle et nos formules holistiques premium inspirées par la nature.",
+    pt: "Experimente a distribuição caribenha 100% natural e fórmulas holísticas premium inspiradas na natureza.",
+  },
+  slide1_cta: {
+    en: "Explore Our Story",
+    es: "Conoce Nuestra Historia",
+    fr: "Découvrir Notre Histoire",
+    pt: "Conheça Nossa História",
+  },
+  slide1_alt: {
+    en: "Noyis Africa natural wellness in Saint John, Antigua — Treasure Man, Treasure Herbs, Treasure Woman",
+    es: "Noyis Africa bienestar natural en Saint John, Antigua",
+    fr: "Noyis Africa bien-être naturel à Saint John, Antigua",
+    pt: "Noyis Africa bem-estar natural em Saint John, Antígua",
+  },
+
+  slide2_title: {
+    en: "Feel the Rhythm. Build Your Stamina.",
+    es: "Siente el Ritmo. Construye tu Resistencia.",
+    fr: "Ressentez le Rythme. Bâtissez votre Endurance.",
+    pt: "Sinta o Ritmo. Construa sua Resistência.",
+  },
+  slide2_sub: {
+    en: "Prepare your body for the road with Treasure Man, Treasure Herbs and Treasure Woman. Maximize energy, healthy blood circulation and physical endurance for nonstop jumping from T-Shirt Mas to Last Lap.",
+    es: "Prepara tu cuerpo para la ruta con Treasure Man, Treasure Herbs y Treasure Woman. Máxima energía, circulación y resistencia desde T-Shirt Mas hasta Last Lap.",
+    fr: "Préparez votre corps pour la route avec Treasure Man, Treasure Herbs et Treasure Woman. Énergie, circulation et endurance, du T-Shirt Mas au Last Lap.",
+    pt: "Prepare seu corpo para a estrada com Treasure Man, Treasure Herbs e Treasure Woman. Energia, circulação e resistência do T-Shirt Mas ao Last Lap.",
+  },
+  slide2_cta: {
+    en: "Shop Endurance Boosters",
+    es: "Comprar Potenciadores",
+    fr: "Acheter les Boosters d'Endurance",
+    pt: "Comprar Potencializadores",
+  },
+  slide2_alt: {
+    en: "Antigua Carnival 2026 stamina — Treasure Man, Treasure Herbs and Treasure Woman herbal bottles",
+    es: "Resistencia para el Carnaval de Antigua 2026 — botellas Treasure",
+    fr: "Endurance pour le Carnaval d'Antigua 2026 — flacons Treasure",
+    pt: "Resistência para o Carnaval de Antígua 2026 — frascos Treasure",
+  },
+
+  slide3_title: {
+    en: "J'ouvert Morning Clear-Up & Recovery.",
+    es: "Recuperación y Limpieza Post J'ouvert.",
+    fr: "Récupération et Nettoyage du Matin J'ouvert.",
+    pt: "Recuperação e Limpeza Pós J'ouvert.",
+  },
+  slide3_sub: {
+    en: "Wash away the paint, powder and festival exhaustion. Rehydrate your system and support complete digestive detoxification with our potent flagship formulas.",
+    es: "Quita la pintura, el polvo y el cansancio del festival. Rehidrátate y apoya la desintoxicación digestiva con nuestras fórmulas insignia.",
+    fr: "Éliminez peinture, poudre et fatigue. Réhydratez-vous et soutenez la détoxification digestive avec nos formules phares.",
+    pt: "Lave a tinta, o pó e o cansaço do festival. Reidrate e apoie a desintoxicação digestiva com nossas fórmulas principais.",
+  },
+  slide3_cta: {
+    en: "Browse Recovery Blends",
+    es: "Ver Mezclas de Recuperación",
+    fr: "Voir les Mélanges de Récupération",
+    pt: "Ver Misturas de Recuperação",
+  },
+  slide3_alt: {
+    en: "Antigua Carnival 2026 health recovery — Treasure Man herbal hydration and detox",
+    es: "Recuperación post Carnaval de Antigua 2026 — Treasure Man hidratación y detox",
+    fr: "Récupération Carnaval d'Antigua 2026 — Treasure Man hydratation et détox",
+    pt: "Recuperação Carnaval de Antígua 2026 — Treasure Man hidratação e detox",
+  },
+
+  slide4_title: {
+    en: "A Rare Taste You've Likely Never Experienced.",
+    es: "Un Sabor Único Que Probablemente Nunca Has Probado.",
+    fr: "Un Goût Rare Que Vous N'avez Probablement Jamais Connu.",
+    pt: "Um Sabor Raro Que Você Provavelmente Nunca Provou.",
+  },
+  slide4_sub: {
+    en: "This isn't your standard soda — discover the uniquely crisp, rich flavor of real African-bottled Coca-Cola. A refreshing, one-in-a-million formulation available right here in the Caribbean.",
+    es: "No es una soda común — descubre el sabor único y refrescante de la auténtica Coca-Cola embotellada en África, disponible aquí en el Caribe.",
+    fr: "Ce n'est pas un soda ordinaire — découvrez le goût unique et rafraîchissant du vrai Coca-Cola embouteillé en Afrique, disponible dans les Caraïbes.",
+    pt: "Não é um refrigerante comum — descubra o sabor único e refrescante da autêntica Coca-Cola engarrafada na África, disponível no Caribe.",
+  },
+  slide4_cta: {
+    en: "Order African Coke Instantly",
+    es: "Pide la Coca Africana ya",
+    fr: "Commander le Coca Africain",
+    pt: "Pedir Coca Africana Já",
+  },
+  slide4_alt: {
+    en: "Exclusive African Coca-Cola bulk case wholesale in Antigua — EC$60 per 24-can case",
+    es: "Coca-Cola africana exclusiva al por mayor en Antigua",
+    fr: "Coca-Cola africain exclusif en gros à Antigua",
+    pt: "Coca-Cola africana exclusiva no atacado em Antígua",
+  },
+
+  slide5_title: {
+    en: "Stock Up Locally in St. John's!",
+    es: "¡Abastécete Localmente en St. John's!",
+    fr: "Faites le Plein à St. John's !",
+    pt: "Abasteça-se Localmente em St. John's!",
+  },
+  slide5_sub: {
+    en: "Located on Lower Nevis Street, right by Cherry Jamdon Club. Pop into our Antigua store before heading to Carnival City, or order via WhatsApp for seamless distribution.",
+    es: "En Lower Nevis Street, junto a Cherry Jamdon Club. Visita nuestra tienda en Antigua antes de Carnival City, o pide por WhatsApp.",
+    fr: "Situé sur Lower Nevis Street, près du Cherry Jamdon Club. Passez à notre boutique d'Antigua avant Carnival City, ou commandez sur WhatsApp.",
+    pt: "Na Lower Nevis Street, ao lado do Cherry Jamdon Club. Visite nossa loja em Antígua antes da Carnival City, ou peça pelo WhatsApp.",
+  },
+  slide5_cta: {
+    en: "Message to Order on WhatsApp",
+    es: "Pedir por WhatsApp",
+    fr: "Commander sur WhatsApp",
+    pt: "Pedir pelo WhatsApp",
+  },
+  slide5_alt: {
+    en: "Noyis Africa wholesale & retail warehouse on Lower Nevis Street, Saint John, Antigua",
+    es: "Almacén Noyis Africa en Lower Nevis Street, Saint John, Antigua",
+    fr: "Entrepôt Noyis Africa sur Lower Nevis Street, Saint John, Antigua",
+    pt: "Armazém Noyis Africa na Lower Nevis Street, Saint John, Antígua",
+  },
 };
 
 export function tr(key: keyof typeof t, lang: Lang): string {
