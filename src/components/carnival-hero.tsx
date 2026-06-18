@@ -11,7 +11,7 @@ import slide3Img from "@/assets/treasure-man-carnival.png.asset.json";
 import slide4Img from "@/assets/noyis-cola-antigua.jpeg.asset.json";
 import slide5Img from "@/assets/noyis-cover.png.asset.json";
 
-const AUTO_MS = 6500;
+const AUTO_MS = 4000;
 
 const COCA_MSG =
   "Hello NOYIS AFRICA, I'd like to order the exclusive African-bottled Coca-Cola (case of 24) for pickup or delivery in Antigua. Please send me the total price and availability. Thank you!";
@@ -132,7 +132,7 @@ export function CarnivalHero() {
       onTouchEnd={onTouchEnd}
     >
       {/* Slides */}
-      <div className="relative w-full aspect-[16/9] min-h-[420px]">
+      <div className="relative w-full h-[60vh] min-h-[340px] max-h-[420px] sm:max-h-[480px]">
         {SLIDES.map((s, i) => {
           const active = i === index;
           return (
