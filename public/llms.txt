@@ -1,0 +1,28 @@
+# Noyis Africa
+
+> Wholesale & retail warehouse in St. John's, Antigua & Barbuda. Natural wellness, herbal formulas, functional beverages and commercial drinks distributed across the Caribbean, the US, Canada and Latin America.
+
+Tagline: Your Health, Our Priority.
+
+Noyis Africa supplies premium herbal formulas (Treasure Man, Treasure Woman, Treasure Herbs), functional coffees, Caribbean herbal teas, and wholesale beverage cartons (Coca-Cola, Malta, juices) to consumers, retailers, and distributors. Orders are placed via WhatsApp — no online checkout required.
+
+## Pages
+- [Home](/): Brand overview, featured products, categories
+- [All Products](/products): Full catalog
+- [Wholesale](/wholesale): Cartons, pallets, distributor supply
+- [Store Locator](/store-locator): Warehouse address, hours, directions
+- [Contact](/contact): WhatsApp, phone, location
+
+## Products
+- [Treasure Woman](/products/treasure-woman): Women's herbal libido & hormonal balance tonic with Goron Tula
+- [Treasure Man](/products/treasure-man): Men's herbal vitality & prostate health formula
+- [Treasure Herbs](/products/treasure-herbs): General wellness herbal tonic
+- [Functional Herbal Coffee](/products/functional-herbal-coffee): Coffee with adaptogenic herbs
+- [Caribbean Herbal Tea](/products/caribbean-herbal-tea): Soursop, moringa, lemongrass, ginger blend
+- [Coca-Cola Carton](/products/coca-cola-carton): 24x330ml wholesale
+- [Malta Carton](/products/malta-carton): 24x330ml wholesale
+
+## Contact
+- WhatsApp: +1 (268) 721-0101 · +1 (268) 770-0171
+- Address: Lower Nevis Street, St. John's, Antigua & Barbuda (near Cherry Jamdon Club)
+- Languages: English, Spanish, French, Portuguese
