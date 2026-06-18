@@ -9,7 +9,11 @@ export const Route = createFileRoute("/contact")({
     meta: [
       { title: "Contact Noyis Africa" },
       { name: "description", content: "Reach Noyis Africa in St. John's, Antigua via WhatsApp, phone or in-store. Wholesale and retail inquiries welcome." },
+      { property: "og:title", content: "Contact Noyis Africa" },
+      { property: "og:description", content: "Reach us via WhatsApp, phone or in-store in St. John's, Antigua." },
+      { property: "og:url", content: "/contact" },
     ],
+    links: [{ rel: "canonical", href: "/contact" }],
   }),
   component: ContactPage,
   errorComponent: ({ error }) => <div className="p-8 text-destructive">{error.message}</div>,
