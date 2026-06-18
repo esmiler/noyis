@@ -805,5 +805,291 @@ function UsersAdmin() {
   );
 }
 
+// ---------- GUIDES ----------
+type Guide = {
+  id: string;
+  slug: string;
+  title_localized: Localized;
+  excerpt_localized: Localized;
+  body_localized: Localized;
+  hero_image: string | null;
+  category: string | null;
+  tags: string[];
+  faq_localized: { q: string; a: string }[];
+  reading_minutes: number;
+  author: string | null;
+  published: boolean;
+  sort_order: number;
+};
+
+function GuidesAdmin() {
+  const [items, setItems] = useState<Guide[]>([]);
+  const [editing, setEditing] = useState<Guide | null>(null);
+
+  const load = useCallback(async () => {
+    const { data } = await supabase.from("guides").select("*").order("sort_order");
+    setItems((data ?? []) as unknown as Guide[]);
+  }, []);
+  useEffect(() => { void load(); }, [load]);
+
+  function blank(): Guide {
+    return {
+      id: "", slug: "", title_localized: { en: "" }, excerpt_localized: { en: "" },
+      body_localized: { en: "" }, hero_image: null, category: "tradition", tags: [],
+      faq_localized: [], reading_minutes: 4, author: "Noyis Africa", published: true, sort_order: items.length * 10,
+    };
+  }
+
+  async function remove(id: string) {
+    if (!confirm("Delete this guide?")) return;
+    const { error } = await supabase.from("guides").delete().eq("id", id);
+    if (error) toast.error(error.message); else { toast.success("Deleted"); void load(); }
+  }
+
+  if (editing) return <GuideEditor guide={editing} onClose={() => { setEditing(null); void load(); }} />;
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <h2 className="font-display text-xl font-semibold">Guides ({items.length})</h2>
+        <Button onClick={() => setEditing(blank())}><Plus className="mr-1.5 h-4 w-4" /> New guide</Button>
+      </div>
+      <div className="overflow-hidden rounded-lg border bg-card">
+        <table className="w-full text-sm">
+          <thead className="bg-muted/50 text-left text-xs uppercase text-muted-foreground">
+            <tr>
+              <th className="p-3">Title</th>
+              <th className="p-3">Slug</th>
+              <th className="p-3">Category</th>
+              <th className="p-3">Published</th>
+              <th className="p-3"></th>
+            </tr>
+          </thead>
+          <tbody className="divide-y">
+            {items.map((g) => (
+              <tr key={g.id} className="hover:bg-muted/30">
+                <td className="p-3 font-medium">{g.title_localized?.en || "(untitled)"}</td>
+                <td className="p-3 font-mono text-xs">{g.slug}</td>
+                <td className="p-3">{g.category ?? "—"}</td>
+                <td className="p-3">{g.published ? <Badge variant="secondary">Live</Badge> : <Badge variant="outline">Draft</Badge>}</td>
+                <td className="p-3 text-right space-x-2">
+                  <Button size="sm" variant="outline" onClick={() => setEditing(g)}>Edit</Button>
+                  <Button size="sm" variant="ghost" onClick={() => remove(g.id)}><Trash2 className="h-4 w-4" /></Button>
+                </td>
+              </tr>
+            ))}
+            {items.length === 0 && (
+              <tr><td className="p-6 text-center text-muted-foreground" colSpan={5}>No guides yet.</td></tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+function GuideEditor({ guide, onClose }: { guide: Guide; onClose: () => void }) {
+  const [g, setG] = useState<Guide>(guide);
+  const [saving, setSaving] = useState(false);
+  const isNew = !g.id;
+
+  function patch<K extends keyof Guide>(k: K, v: Guide[K]) { setG({ ...g, [k]: v }); }
+
+  async function save() {
+    setSaving(true);
+    try {
+      const payload = {
+        slug: g.slug, title_localized: g.title_localized, excerpt_localized: g.excerpt_localized,
+        body_localized: g.body_localized, hero_image: g.hero_image, category: g.category, tags: g.tags,
+        faq_localized: g.faq_localized as never, reading_minutes: g.reading_minutes,
+        author: g.author, published: g.published, sort_order: g.sort_order,
+      };
+      const { error } = isNew
+        ? await supabase.from("guides").insert(payload)
+        : await supabase.from("guides").update(payload).eq("id", g.id);
+      if (error) throw error;
+      toast.success("Saved");
+      onClose();
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Save failed");
+    } finally { setSaving(false); }
+  }
+
+  function setFaq(i: number, field: "q" | "a", v: string) {
+    const next = [...g.faq_localized];
+    next[i] = { ...next[i], [field]: v };
+    patch("faq_localized", next);
+  }
+
+  return (
+    <div className="space-y-6 rounded-lg border bg-card p-6">
+      <div className="flex items-center justify-between">
+        <h2 className="font-display text-xl font-semibold">{isNew ? "New guide" : "Edit guide"}</h2>
+        <Button variant="ghost" onClick={onClose}>Cancel</Button>
+      </div>
+      <div className="grid gap-4 sm:grid-cols-3">
+        <div>
+          <Label>Slug</Label>
+          <Input value={g.slug} onChange={(e) => patch("slug", e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, "-"))} />
+        </div>
+        <div>
+          <Label>Category</Label>
+          <Input value={g.category ?? ""} onChange={(e) => patch("category", e.target.value || null)} placeholder="tradition, product-guide, how-to" />
+        </div>
+        <div>
+          <Label>Reading minutes</Label>
+          <Input type="number" value={g.reading_minutes} onChange={(e) => patch("reading_minutes", Number(e.target.value) || 0)} />
+        </div>
+      </div>
+      <LocalizedField label="Title" value={g.title_localized} onChange={(v) => patch("title_localized", v)} />
+      <LocalizedField label="Excerpt" value={g.excerpt_localized} onChange={(v) => patch("excerpt_localized", v)} multiline />
+      <LocalizedField label="Body (HTML allowed)" value={g.body_localized} onChange={(v) => patch("body_localized", v)} multiline />
+      <ImageUploader value={g.hero_image} onChange={(v) => patch("hero_image", v)} />
+      <div>
+        <Label>Tags (comma-separated)</Label>
+        <Input value={g.tags.join(", ")} onChange={(e) => patch("tags", e.target.value.split(",").map((s) => s.trim()).filter(Boolean))} />
+      </div>
+      <div>
+        <div className="mb-2 flex items-center justify-between">
+          <Label>FAQ items (Q&A — boosts AEO/GEO)</Label>
+          <Button size="sm" variant="outline" onClick={() => patch("faq_localized", [...g.faq_localized, { q: "", a: "" }])}>
+            <Plus className="h-3.5 w-3.5" /> Add Q&A
+          </Button>
+        </div>
+        <div className="space-y-2">
+          {g.faq_localized.map((f, i) => (
+            <div key={i} className="rounded-md border bg-muted/30 p-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold text-muted-foreground">Q&A {i + 1}</span>
+                <Button size="sm" variant="ghost" onClick={() => patch("faq_localized", g.faq_localized.filter((_, j) => j !== i))}>
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+              <Input className="mt-2" placeholder="Question" value={f.q} onChange={(e) => setFaq(i, "q", e.target.value)} />
+              <Textarea className="mt-2" rows={2} placeholder="Answer" value={f.a} onChange={(e) => setFaq(i, "a", e.target.value)} />
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-wrap items-center gap-6">
+        <label className="flex items-center gap-2 text-sm">
+          <Switch checked={g.published} onCheckedChange={(v) => patch("published", v)} /> Published
+        </label>
+        <div className="flex items-center gap-2">
+          <Label className="text-sm">Sort</Label>
+          <Input className="w-24" type="number" value={g.sort_order} onChange={(e) => patch("sort_order", Number(e.target.value) || 0)} />
+        </div>
+      </div>
+      <div className="flex justify-end gap-2 border-t pt-4">
+        <Button variant="outline" onClick={onClose}>Cancel</Button>
+        <Button onClick={save} disabled={saving || !g.slug || !g.title_localized.en}>
+          {saving && <Loader2 className="mr-2 h-4 w-4 animate-spin" />} Save guide
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+// ---------- ANALYTICS ----------
+type AnalyticsRow = { product_id: string | null; event_type: string; created_at: string };
+
+function AnalyticsAdmin() {
+  const [rows, setRows] = useState<AnalyticsRow[]>([]);
+  const [products, setProducts] = useState<{ id: string; slug: string; name_localized: Localized }[]>([]);
+  const [days, setDays] = useState(30);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      const since = new Date(Date.now() - days * 86400_000).toISOString();
+      const [{ data: a }, { data: p }] = await Promise.all([
+        supabase.from("product_analytics").select("product_id, event_type, created_at").gte("created_at", since).limit(5000),
+        supabase.from("products").select("id, slug, name_localized"),
+      ]);
+      setRows((a ?? []) as AnalyticsRow[]);
+      setProducts((p ?? []) as unknown as { id: string; slug: string; name_localized: Localized }[]);
+      setLoading(false);
+    })();
+  }, [days]);
+
+  const totals = rows.reduce<Record<string, number>>((acc, r) => {
+    acc[r.event_type] = (acc[r.event_type] ?? 0) + 1;
+    return acc;
+  }, {});
+
+  const byProduct = rows.reduce<Record<string, Record<string, number>>>((acc, r) => {
+    if (!r.product_id) return acc;
+    acc[r.product_id] = acc[r.product_id] ?? {};
+    acc[r.product_id][r.event_type] = (acc[r.product_id][r.event_type] ?? 0) + 1;
+    return acc;
+  }, {});
+
+  const ranked = Object.entries(byProduct)
+    .map(([id, counts]) => {
+      const p = products.find((x) => x.id === id);
+      const total = Object.values(counts).reduce((s, n) => s + n, 0);
+      return { id, name: p?.name_localized?.en ?? p?.slug ?? id.slice(0, 8), counts, total };
+    })
+    .sort((a, b) => b.total - a.total)
+    .slice(0, 25);
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h2 className="font-display text-xl font-semibold">Analytics ({days}d)</h2>
+        <select
+          className="rounded-md border border-input bg-background px-3 py-1.5 text-sm"
+          value={days}
+          onChange={(e) => setDays(Number(e.target.value))}
+        >
+          <option value={7}>Last 7 days</option>
+          <option value={30}>Last 30 days</option>
+          <option value={90}>Last 90 days</option>
+        </select>
+      </div>
+      {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : (
+        <>
+          <div className="grid gap-4 sm:grid-cols-4">
+            {(["view", "whatsapp_click", "add_to_cart", "wholesale_inquiry"] as const).map((k) => (
+              <div key={k} className="rounded-xl border bg-card p-5">
+                <div className="text-xs uppercase tracking-wide text-muted-foreground">{k.replace(/_/g, " ")}</div>
+                <div className="mt-1 font-display text-3xl font-semibold text-botanical">{totals[k] ?? 0}</div>
+              </div>
+            ))}
+          </div>
+          <div className="overflow-hidden rounded-lg border bg-card">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/50 text-left text-xs uppercase text-muted-foreground">
+                <tr>
+                  <th className="p-3">Product</th>
+                  <th className="p-3 text-right">Views</th>
+                  <th className="p-3 text-right">WhatsApp</th>
+                  <th className="p-3 text-right">Add to cart</th>
+                  <th className="p-3 text-right">Total</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y">
+                {ranked.map((r) => (
+                  <tr key={r.id}>
+                    <td className="p-3 font-medium">{r.name}</td>
+                    <td className="p-3 text-right">{r.counts.view ?? 0}</td>
+                    <td className="p-3 text-right">{r.counts.whatsapp_click ?? 0}</td>
+                    <td className="p-3 text-right">{r.counts.add_to_cart ?? 0}</td>
+                    <td className="p-3 text-right font-semibold">{r.total}</td>
+                  </tr>
+                ))}
+                {ranked.length === 0 && (
+                  <tr><td className="p-6 text-center text-muted-foreground" colSpan={5}>No product events recorded yet.</td></tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 // Silence unused-import warning for Lang
 export type { Lang };
