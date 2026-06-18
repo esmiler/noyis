@@ -1,0 +1,1 @@
+DELETE FROM products WHERE slug IN ('functional-herbal-coffee', 'malta-carton', 'caribbean-herbal-tea');
