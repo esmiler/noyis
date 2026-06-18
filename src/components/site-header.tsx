@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Menu, ShoppingCart, X, Globe, Phone } from "lucide-react";
 import { useState } from "react";
-import logoAsset from "@/assets/noyis-logo.png.asset.json";
+import logoAsset from "@/assets/noyis-official-logo.jpeg.asset.json";
 import { useLang } from "./lang-context";
 import { LANG_LABELS, SUPPORTED_LANGS, tr, type Lang } from "@/lib/i18n";
 import { useCart } from "@/hooks/use-cart";
