@@ -144,7 +144,7 @@ export function CarnivalHero() {
               <img
                 src={s.img}
                 alt={tr(s.altKey as never, lang as Lang)}
-                className="h-full w-full object-contain bg-botanical"
+                className="h-full w-full object-contain"
                 loading={i === 0 ? "eager" : "lazy"}
                 decoding="async"
               />
