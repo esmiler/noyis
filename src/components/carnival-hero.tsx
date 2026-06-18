@@ -123,7 +123,7 @@ export function CarnivalHero() {
   return (
     <section
       aria-label="Noyis Africa featured highlights — Antigua Carnival 2026"
-      className="relative isolate overflow-hidden bg-botanical"
+      className="relative isolate overflow-hidden bg-transparent"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -144,12 +144,12 @@ export function CarnivalHero() {
               <img
                 src={s.img}
                 alt={tr(s.altKey as never, lang as Lang)}
-                className="h-full w-full object-contain bg-botanical"
+                className="h-full w-full object-contain"
                 loading={i === 0 ? "eager" : "lazy"}
                 decoding="async"
               />
               {/* Bottom darkening gradient for legibility under text */}
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/85 via-black/55 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
             </div>
           );
         })}
@@ -166,10 +166,10 @@ export function CarnivalHero() {
                   className={`max-w-3xl transition-all duration-500 ${active ? "relative opacity-100 translate-y-0" : "pointer-events-none absolute opacity-0 translate-y-3"}`}
                   aria-hidden={!active}
                 >
-                  <Heading className="font-display text-3xl font-semibold leading-[1.05] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] sm:text-5xl lg:text-6xl">
+                  <Heading className="font-display text-3xl font-bold leading-[1.05] text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)] [text-shadow:0_1px_0_rgba(0,0,0,0.8),0_2px_4px_rgba(0,0,0,0.6)] sm:text-5xl lg:text-6xl">
                     {tr(s.titleKey as never, lang as Lang)}
                   </Heading>
-                  <p className="mt-5 max-w-2xl text-base text-white/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)] sm:text-lg">
+                  <p className="mt-5 max-w-2xl text-base font-medium text-white drop-shadow-[0_1px_12px_rgba(0,0,0,0.9)] [text-shadow:0_1px_2px_rgba(0,0,0,0.7)] sm:text-lg">
                     {tr(s.subKey as never, lang as Lang)}
                   </p>
                   <div className="mt-7 flex flex-wrap gap-3">
