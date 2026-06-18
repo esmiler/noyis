@@ -26,9 +26,9 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link to="/" className="flex items-center">
-          <img src={logoAsset.url} alt="Noyis Africa" className="h-14 w-auto object-contain" />
+          <img src={logoAsset.url} alt="Noyis Africa" className="h-16 w-auto object-contain" />
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">
