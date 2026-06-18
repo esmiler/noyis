@@ -14,7 +14,264 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      categories: {
+        Row: {
+          created_at: string
+          description_localized: Json
+          featured: boolean
+          id: string
+          image: string | null
+          name_localized: Json
+          slug: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description_localized?: Json
+          featured?: boolean
+          id?: string
+          image?: string | null
+          name_localized?: Json
+          slug: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description_localized?: Json
+          featured?: boolean
+          id?: string
+          image?: string | null
+          name_localized?: Json
+          slug?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      contact_submissions: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          phone: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          phone?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          phone?: string | null
+        }
+        Relationships: []
+      }
+      faqs: {
+        Row: {
+          answer_localized: Json
+          created_at: string
+          id: string
+          question_localized: Json
+          sort_order: number
+        }
+        Insert: {
+          answer_localized?: Json
+          created_at?: string
+          id?: string
+          question_localized?: Json
+          sort_order?: number
+        }
+        Update: {
+          answer_localized?: Json
+          created_at?: string
+          id?: string
+          question_localized?: Json
+          sort_order?: number
+        }
+        Relationships: []
+      }
+      product_analytics: {
+        Row: {
+          created_at: string
+          event_type: string
+          id: string
+          product_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          event_type: string
+          id?: string
+          product_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          event_type?: string
+          id?: string
+          product_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_analytics_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      product_images: {
+        Row: {
+          alt_text_localized: Json
+          created_at: string
+          id: string
+          image_url: string
+          product_id: string
+          sort_order: number
+        }
+        Insert: {
+          alt_text_localized?: Json
+          created_at?: string
+          id?: string
+          image_url: string
+          product_id: string
+          sort_order?: number
+        }
+        Update: {
+          alt_text_localized?: Json
+          created_at?: string
+          id?: string
+          image_url?: string
+          product_id?: string
+          sort_order?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_images_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      products: {
+        Row: {
+          benefits: Json
+          botanical_origin: string | null
+          category_id: string | null
+          country_of_origin: string | null
+          created_at: string
+          explicit_statistics: Json
+          featured: boolean
+          hero_image: string | null
+          id: string
+          ingredients: Json
+          is_wholesale: boolean
+          long_description_localized: Json
+          name_localized: Json
+          pricing_usd: number | null
+          pricing_xcd: number | null
+          short_description_localized: Json
+          slug: string
+          stock_quantity: number
+          stock_status: string
+          tags: string[]
+          updated_at: string
+          usage_localized: Json
+          warnings_localized: Json
+        }
+        Insert: {
+          benefits?: Json
+          botanical_origin?: string | null
+          category_id?: string | null
+          country_of_origin?: string | null
+          created_at?: string
+          explicit_statistics?: Json
+          featured?: boolean
+          hero_image?: string | null
+          id?: string
+          ingredients?: Json
+          is_wholesale?: boolean
+          long_description_localized?: Json
+          name_localized?: Json
+          pricing_usd?: number | null
+          pricing_xcd?: number | null
+          short_description_localized?: Json
+          slug: string
+          stock_quantity?: number
+          stock_status?: string
+          tags?: string[]
+          updated_at?: string
+          usage_localized?: Json
+          warnings_localized?: Json
+        }
+        Update: {
+          benefits?: Json
+          botanical_origin?: string | null
+          category_id?: string | null
+          country_of_origin?: string | null
+          created_at?: string
+          explicit_statistics?: Json
+          featured?: boolean
+          hero_image?: string | null
+          id?: string
+          ingredients?: Json
+          is_wholesale?: boolean
+          long_description_localized?: Json
+          name_localized?: Json
+          pricing_usd?: number | null
+          pricing_xcd?: number | null
+          short_description_localized?: Json
+          slug?: string
+          stock_quantity?: number
+          stock_status?: string
+          tags?: string[]
+          updated_at?: string
+          usage_localized?: Json
+          warnings_localized?: Json
+        }
+        Relationships: [
+          {
+            foreignKeyName: "products_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      settings: {
+        Row: {
+          config_key: string
+          id: string
+          updated_at: string
+          value: Json
+        }
+        Insert: {
+          config_key: string
+          id?: string
+          updated_at?: string
+          value: Json
+        }
+        Update: {
+          config_key?: string
+          id?: string
+          updated_at?: string
+          value?: Json
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
