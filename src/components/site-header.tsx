@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Menu, ShoppingCart, X, Globe, Phone } from "lucide-react";
 import { useState } from "react";
-import logoAsset from "@/assets/noyis-official-logo.jpeg.asset.json";
+import logoAsset from "@/assets/noyis-africa-logo.png.asset.json";
 import { useLang } from "./lang-context";
 import { LANG_LABELS, SUPPORTED_LANGS, tr, type Lang } from "@/lib/i18n";
 import { useCart } from "@/hooks/use-cart";
@@ -28,7 +28,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link to="/" className="flex items-center">
-          <img src={logoAsset.url} alt="Noyis Africa" className="h-16 w-auto object-contain" />
+          <img src={logoAsset.url} alt="Noyis Africa" className="h-24 w-auto object-contain sm:h-28" />
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">
