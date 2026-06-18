@@ -132,7 +132,7 @@ export function CarnivalHero() {
       onTouchEnd={onTouchEnd}
     >
       {/* Slides */}
-      <div className="relative h-[78dvh] min-h-[520px] w-full sm:h-[72dvh] lg:h-[78dvh]">
+      <div className="relative w-full aspect-[16/9] min-h-[420px]">
         {SLIDES.map((s, i) => {
           const active = i === index;
           return (
@@ -144,12 +144,12 @@ export function CarnivalHero() {
               <img
                 src={s.img}
                 alt={tr(s.altKey as never, lang as Lang)}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain bg-botanical"
                 loading={i === 0 ? "eager" : "lazy"}
                 decoding="async"
               />
-              {/* Bottom darkening gradient for legibility */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
+              {/* Bottom darkening gradient for legibility under text */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/85 via-black/55 to-transparent" />
             </div>
           );
         })}

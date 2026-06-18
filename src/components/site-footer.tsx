@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Phone, MapPin, Mail } from "lucide-react";
 import { useLang } from "./lang-context";
 import { tr } from "@/lib/i18n";
-import logoAsset from "@/assets/noyis-logo.png.asset.json";
+import logoAsset from "@/assets/noyis-africa-logo.png.asset.json";
 
 export function SiteFooter() {
   const { lang } = useLang();
