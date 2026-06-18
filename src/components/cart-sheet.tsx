@@ -36,9 +36,6 @@ export function CartSheet({ open, onOpenChange }: { open: boolean; onOpenChange:
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0">
                       <p className="truncate font-medium text-foreground">{i.name}</p>
-                      {i.price_usd ? (
-                        <p className="text-sm text-muted-foreground">USD ${i.price_usd.toFixed(2)}</p>
-                      ) : null}
                     </div>
                     <button
                       onClick={() => remove(i.slug)}
