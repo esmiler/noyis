@@ -680,14 +680,14 @@ function SettingsAdmin() {
   async function save(id: string, value: string) {
     let parsed: unknown = value;
     try { parsed = JSON.parse(value); } catch { /* keep string */ }
-    const { error } = await supabase.from("settings").update({ value: parsed }).eq("id", id);
+    const { error } = await supabase.from("settings").update({ value: parsed as never }).eq("id", id);
     if (error) toast.error(error.message); else toast.success("Saved");
   }
   async function add() {
     if (!newKey) return;
     let parsed: unknown = newVal;
     try { parsed = JSON.parse(newVal); } catch { /* keep */ }
-    const { error } = await supabase.from("settings").insert({ config_key: newKey, value: parsed });
+    const { error } = await supabase.from("settings").insert({ config_key: newKey, value: parsed as never });
     if (error) toast.error(error.message);
     else { setNewKey(""); setNewVal(""); void load(); }
   }
