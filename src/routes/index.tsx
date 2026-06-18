@@ -8,8 +8,8 @@ import { ProductCard } from "@/components/product-card";
 import { useLang } from "@/components/lang-context";
 import { localized, tr } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
-import storefront from "@/assets/noyis-storefront.png.asset.json";
 import lineup from "@/assets/noyis-treasure-lineup.jpg.asset.json";
+import { CarnivalHero } from "@/components/carnival-hero";
 
 const featuredQuery = queryOptions({
   queryKey: ["products", "featured"],
@@ -23,11 +23,11 @@ const categoriesQuery = queryOptions({
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Noyis Africa — Caribbean Wellness & Wholesale" },
+      { title: "Noyis Africa — Antigua Carnival 2026 Wellness, Stamina & Recovery" },
       {
         name: "description",
         content:
-          "Herbal formulas (Treasure Man, Treasure Woman, Treasure Herbs), functional coffees and wholesale beverages from Antigua. WhatsApp ordering, Caribbean delivery.",
+          "Antigua Carnival 2026 stamina, hydration and J'ouvert recovery from Noyis Africa. Treasure Man, Treasure Woman & Treasure Herbs — natural detox teas in St. John's, with WhatsApp ordering and Caribbean delivery.",
       },
       { property: "og:title", content: "Noyis Africa — Caribbean Wellness & Wholesale" },
       { property: "og:description", content: "Herbal formulas, functional coffees and wholesale beverages from Antigua. Your Health, Our Priority." },
@@ -55,45 +55,9 @@ function HomePage() {
     <div className="flex min-h-screen flex-col bg-background">
       <SiteHeader />
 
-      {/* HERO */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={storefront.url} alt="Noyis Africa warehouse storefront in St. John's, Antigua" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-br from-botanical/95 via-botanical/80 to-botanical/50" />
-        </div>
-        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:py-36">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-gold">
-              <Leaf className="h-3.5 w-3.5" /> 100% Natural · Caribbean Distribution
-            </span>
-            <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.05] text-white sm:text-5xl lg:text-6xl">
-              {tr("hero_title", lang)}
-            </h1>
-            <p className="mt-6 max-w-2xl text-base text-white/85 sm:text-lg">{tr("hero_sub", lang)}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90">
-                <Link to="/products" search={{ cat: "natural-wellness" }}>
-                  {tr("hero_cta_wellness", lang)} <ArrowRight className="h-4 w-4" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-white/40 bg-white/10 text-white backdrop-blur hover:bg-white/20">
-                <Link to="/products" search={{ cat: "commercial-beverages" }}>{tr("hero_cta_beverages", lang)}</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-white/40 bg-white/10 text-white backdrop-blur hover:bg-white/20">
-                <Link to="/wholesale">{tr("hero_cta_wholesale", lang)}</Link>
-              </Button>
-              <a
-                href="https://wa.me/12687210101"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-md border border-white/40 bg-white/10 px-5 py-3 text-sm font-medium text-white backdrop-blur hover:bg-white/20"
-              >
-                <MessageCircle className="h-4 w-4" /> {tr("hero_cta_whatsapp", lang)}
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* HERO — Carnival 2026 slider */}
+      <CarnivalHero />
+
 
       {/* SMART CATEGORY SELECTOR */}
       <section className="border-y border-border bg-sand py-14">

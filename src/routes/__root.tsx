@@ -143,6 +143,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 "query-input": "required name=search_term_string",
               },
             },
+            {
+              "@type": "Event",
+              name: "Antigua Carnival 2026",
+              startDate: "2026-07-25",
+              endDate: "2026-08-04",
+              eventStatus: "https://schema.org/EventScheduled",
+              eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+              location: {
+                "@type": "Place",
+                name: "St. John's, Antigua",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "St. John's",
+                  addressCountry: "AG",
+                },
+              },
+              organizer: {
+                "@type": "Organization",
+                name: "Noyis Africa",
+                url: "https://noyisafrica.com",
+              },
+              description:
+                "Noyis Africa supports Antigua Carnival 2026 with natural stamina, hydration and J'ouvert recovery formulas — Treasure Man, Treasure Woman and Treasure Herbs — available at Lower Nevis Street, St. John's.",
+            },
           ],
         }),
       },
