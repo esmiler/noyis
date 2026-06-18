@@ -166,7 +166,7 @@ export function CarnivalHero() {
                   className={`max-w-3xl transition-all duration-500 ${active ? "relative opacity-100 translate-y-0" : "pointer-events-none absolute opacity-0 translate-y-3"}`}
                   aria-hidden={!active}
                 >
-                  <Heading className="font-display text-3xl font-semibold leading-[1.05] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] sm:text-5xl lg:text-6xl">
+                  <Heading className="font-display text-3xl font-bold leading-[1.05] text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)] [text-shadow:0_1px_0_rgba(0,0,0,0.8),0_2px_4px_rgba(0,0,0,0.6)] sm:text-5xl lg:text-6xl">
                     {tr(s.titleKey as never, lang as Lang)}
                   </Heading>
                   <p className="mt-5 max-w-2xl text-base text-white/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)] sm:text-lg">
