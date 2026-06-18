@@ -123,7 +123,7 @@ export function CarnivalHero() {
   return (
     <section
       aria-label="Noyis Africa featured highlights — Antigua Carnival 2026"
-      className="relative isolate overflow-hidden bg-botanical"
+      className="relative isolate overflow-hidden bg-transparent"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
