@@ -47,6 +47,7 @@ export const t: Dict = {
   nav_locator: { en: "Store Locator", es: "Tienda", fr: "Magasin", pt: "Loja" },
   nav_faq: { en: "FAQ", es: "Preguntas", fr: "FAQ", pt: "Perguntas" },
   nav_products: { en: "All Products", es: "Productos", fr: "Produits", pt: "Produtos" },
+  nav_guides: { en: "Guides", es: "Guías", fr: "Guides", pt: "Guias" },
 
   cart: { en: "Cart", es: "Carrito", fr: "Panier", pt: "Carrinho" },
   cart_empty: { en: "Your cart is empty.", es: "Tu carrito está vacío.", fr: "Votre panier est vide.", pt: "Seu carrinho está vazio." },

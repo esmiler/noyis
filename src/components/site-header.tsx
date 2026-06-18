@@ -19,6 +19,7 @@ export function SiteHeader() {
     { label: tr("nav_wellness", lang), to: "/products?cat=natural-wellness" },
     { label: tr("nav_beverages", lang), to: "/products?cat=commercial-beverages" },
     { label: tr("nav_wholesale", lang), to: "/wholesale" },
+    { label: tr("nav_guides", lang), to: "/guides" },
     { label: tr("nav_locator", lang), to: "/store-locator" },
     { label: tr("nav_contact", lang), to: "/contact" },
   ];

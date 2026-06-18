@@ -10,6 +10,7 @@ Noyis Africa supplies premium herbal formulas (Treasure Man, Treasure Woman, Tre
 - [Home](/): Brand overview, featured products, categories
 - [All Products](/products): Full catalog
 - [Wholesale](/wholesale): Cartons, pallets, distributor supply
+- [Guides](/guides): Wellness guides, herbal traditions, product deep-dives, FAQs
 - [Store Locator](/store-locator): Warehouse address, hours, directions
 - [Contact](/contact): WhatsApp, phone, location
 
@@ -21,6 +22,12 @@ Noyis Africa supplies premium herbal formulas (Treasure Man, Treasure Woman, Tre
 - [Caribbean Herbal Tea](/products/caribbean-herbal-tea): Soursop, moringa, lemongrass, ginger blend
 - [Coca-Cola Carton](/products/coca-cola-carton): 24x330ml wholesale
 - [Malta Carton](/products/malta-carton): 24x330ml wholesale
+
+## Guides
+- [Caribbean Herbal Traditions](/guides/caribbean-herbal-traditions): Soursop, moringa, ginger, lemongrass — a living apothecary
+- [Treasure Woman Guide](/guides/treasure-woman-guide): Goron Tula and women's herbal balance
+- [Treasure Man Guide](/guides/treasure-man-guide): Vitality and prostate-support botanicals
+- [Soursop Tea Benefits](/guides/soursop-tea-benefits): Brewing instructions and traditional uses
 
 ## Contact
 - WhatsApp: +1 (268) 721-0101 · +1 (268) 770-0171
