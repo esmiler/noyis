@@ -68,18 +68,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Noyis Africa — Natural Wellness & Wholesale Distribution in the Caribbean" },
+      { title: "Noyis Africa — Wellness & Wholesale, Caribbean" },
       {
         name: "description",
         content:
-          "Premium herbal formulas, functional coffees, therapeutic oils and wholesale beverage distribution from Antigua & Barbuda. Your Health, Our Priority.",
+          "Premium herbal formulas, functional coffees and wholesale beverages from Antigua. Your Health, Our Priority.",
       },
       { name: "author", content: "Noyis Africa" },
       { name: "theme-color", content: "#1B5E20" },
       { property: "og:site_name", content: "Noyis Africa" },
-      { property: "og:title", content: "Noyis Africa — Wellness & Wholesale Warehouse" },
+      { property: "og:title", content: "Noyis Africa — Wellness & Wholesale" },
       { property: "og:description", content: "Natural wellness, herbal formulas and wholesale beverages across the Caribbean." },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
