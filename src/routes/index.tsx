@@ -178,6 +178,23 @@ function HomePage() {
         </div>
       </section>
 
+      {/* CUSTOMER EXPERIENCES */}
+      <section className="bg-background py-14 sm:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="max-w-2xl">
+            <h2 className="font-display text-3xl text-botanical sm:text-4xl">{tr("experiences_title", lang)}</h2>
+            <p className="mt-2 text-muted-foreground">{tr("experiences_sub", lang)}</p>
+          </div>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {[tr("exp_1", lang), tr("exp_2", lang), tr("exp_3", lang)].map((quote, i) => (
+              <figure key={i} className="rounded-2xl border border-border bg-card p-5 shadow-soft">
+                <blockquote className="text-sm text-foreground">{quote}</blockquote>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* WHY NOYIS */}
       <section className="bg-sand py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
