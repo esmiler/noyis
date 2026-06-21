@@ -44,8 +44,13 @@ export function SiteFooter() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-white/10 py-4 text-center text-xs text-botanical-foreground/60">
-        © {new Date().getFullYear()} Noyis Africa · {tr("footer_tagline", lang)}
+      <div className="border-t border-white/10 px-4 py-6 text-center sm:px-6">
+        <p className="mx-auto max-w-4xl text-[11px] leading-relaxed text-botanical-foreground/60">
+          {tr("footer_disclaimer", lang)}
+        </p>
+        <p className="mt-3 text-xs text-botanical-foreground/60">
+          © {new Date().getFullYear()} Noyis Africa · {tr("footer_tagline", lang)}
+        </p>
       </div>
     </footer>
   );
