@@ -229,9 +229,10 @@ export function CarnivalHero() {
 
       {/* SEO/AEO keyword sink */}
       <p className="sr-only">
-        Antigua Carnival 2026 health recovery. Natural wellness in Saint John. Treasure Man Antigua,
-        Treasure Herbs J'ouvert recovery, Treasure Woman stamina. African-bottled Coca-Cola wholesale
-        Caribbean. Noyis Africa Lower Nevis Street St. John's wholesale and retail warehouse.
+        Antigua Carnival 2026 wellness essentials. Natural wellness in Saint John. Treasure Man,
+        Treasure Herbs and Treasure Woman herbal wellness formulas. African-bottled Coca-Cola
+        wholesale across the Caribbean. Noyis Africa wholesale and retail warehouse on Lower
+        Nevis Street, St. John's, Antigua.
       </p>
     </section>
   );
