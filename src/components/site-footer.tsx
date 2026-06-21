@@ -8,7 +8,7 @@ export function SiteFooter() {
   const { lang } = useLang();
   return (
     <footer className="border-t border-border bg-botanical text-botanical-foreground">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-5">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
             <img src={logoAsset.url} alt="" className="h-12 w-12 rounded-full bg-white p-1" />
@@ -31,6 +31,19 @@ export function SiteFooter() {
             <li><Link to="/products" search={{ cat: "natural-wellness" }} className="hover:text-gold">{tr("nav_wellness", lang)}</Link></li>
             <li><Link to="/products" search={{ cat: "commercial-beverages" }} className="hover:text-gold">{tr("nav_beverages", lang)}</Link></li>
             <li><Link to="/wholesale" className="hover:text-gold">{tr("nav_wholesale", lang)}</Link></li>
+          </ul>
+        </div>
+
+        <div>
+          <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold">{tr("footer_pages", lang)}</p>
+          <ul className="space-y-2 text-sm">
+            <li><Link to="/" className="hover:text-gold">{tr("nav_home", lang)}</Link></li>
+            <li><Link to="/products" className="hover:text-gold">{tr("nav_products", lang)}</Link></li>
+            <li><Link to="/treasure" className="hover:text-gold">{tr("nav_treasure", lang)}</Link></li>
+            <li><Link to="/wholesale" className="hover:text-gold">{tr("nav_wholesale", lang)}</Link></li>
+            <li><Link to="/guides" className="hover:text-gold">{tr("nav_guides", lang)}</Link></li>
+            <li><Link to="/store-locator" className="hover:text-gold">{tr("nav_locator", lang)}</Link></li>
+            <li><Link to="/contact" className="hover:text-gold">{tr("nav_contact", lang)}</Link></li>
           </ul>
         </div>
 
