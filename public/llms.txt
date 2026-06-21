@@ -15,9 +15,9 @@ Noyis Africa supplies premium herbal formulas (Treasure Man, Treasure Woman, Tre
 - [Contact](/contact): WhatsApp, phone, location
 
 ## Products
-- [Treasure Woman](/products/treasure-woman): Women's herbal libido & hormonal balance tonic with Goron Tula
-- [Treasure Man](/products/treasure-man): Men's herbal vitality & prostate health formula
-- [Treasure Herbs](/products/treasure-herbs): General wellness herbal tonic
+- [Treasure Woman](/products/treasure-woman): Herbal wellness formula for women's everyday vitality and balance (Goron Tula & Dawadawa)
+- [Treasure Man](/products/treasure-man): Herbal wellness formula for men's everyday vitality and active lifestyle
+- [Treasure Herbs](/products/treasure-herbs): Family herbal wellness formula for everyday vitality
 - [Functional Herbal Coffee](/products/functional-herbal-coffee): Coffee with adaptogenic herbs
 - [Caribbean Herbal Tea](/products/caribbean-herbal-tea): Soursop, moringa, lemongrass, ginger blend
 - [Coca-Cola Carton](/products/coca-cola-carton): 24x330ml wholesale
@@ -25,8 +25,8 @@ Noyis Africa supplies premium herbal formulas (Treasure Man, Treasure Woman, Tre
 
 ## Guides
 - [Caribbean Herbal Traditions](/guides/caribbean-herbal-traditions): Soursop, moringa, ginger, lemongrass — a living apothecary
-- [Treasure Woman Guide](/guides/treasure-woman-guide): Goron Tula and women's herbal balance
-- [Treasure Man Guide](/guides/treasure-man-guide): Vitality and prostate-support botanicals
+- [Treasure Woman Guide](/guides/treasure-woman-guide): Goron Tula, Dawadawa and women's everyday wellness
+- [Treasure Man Guide](/guides/treasure-man-guide): Traditional botanicals for men's everyday vitality
 - [Soursop Tea Benefits](/guides/soursop-tea-benefits): Brewing instructions and traditional uses
 
 ## Contact
