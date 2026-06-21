@@ -144,6 +144,76 @@ export const t: Dict = {
   store_directions: { en: "Get directions", es: "Cómo llegar", fr: "Itinéraire", pt: "Como chegar" },
 
   footer_tagline: { en: "Your Health, Our Priority", es: "Tu Salud, Nuestra Prioridad", fr: "Votre Santé, Notre Priorité", pt: "Sua Saúde, Nossa Prioridade" },
+  footer_disclaimer: {
+    en: "Disclaimer: Noyis Africa products are traditional herbal wellness formulas designed to support overall vitality and are not intended to diagnose, treat, cure or prevent any disease. Consult a healthcare professional if you have a medical condition. Individual results may vary.",
+    es: "Aviso: los productos Noyis Africa son fórmulas herbales tradicionales para apoyar el bienestar general y no están destinados a diagnosticar, tratar, curar ni prevenir ninguna enfermedad. Consulte a un profesional de la salud si tiene alguna condición. Los resultados individuales pueden variar.",
+    fr: "Avertissement : les produits Noyis Africa sont des formules à base de plantes traditionnelles pour soutenir le bien-être général et ne sont pas destinés à diagnostiquer, traiter, guérir ou prévenir une maladie. Consultez un professionnel de santé. Les résultats individuels peuvent varier.",
+    pt: "Aviso: os produtos Noyis Africa são fórmulas herbais tradicionais para apoiar o bem-estar geral e não se destinam a diagnosticar, tratar, curar ou prevenir qualquer doença. Consulte um profissional de saúde. Os resultados individuais podem variar.",
+  },
+
+  who_title: { en: "Who We Are", es: "Quiénes Somos", fr: "Qui Sommes-nous", pt: "Quem Somos" },
+  who_body: {
+    en: "Noyis Africa is a Caribbean-based wellness, beverage, wholesale and retail company headquartered in St. John's, Antigua. We serve customers and partners across Antigua & Barbuda, the wider Caribbean, North America and Latin America with traditional herbal wellness formulas, commercial beverages, wholesale supply and African-inspired cuisines.",
+    es: "Noyis Africa es una empresa caribeña de bienestar, bebidas, mayoreo y retail con sede en St. John's, Antigua. Atendemos a clientes y socios en Antigua y Barbuda, el Caribe, Norteamérica y América Latina con fórmulas herbales tradicionales, bebidas comerciales, suministro al mayoreo y cocina de inspiración africana.",
+    fr: "Noyis Africa est une entreprise caribéenne de bien-être, boissons, gros et retail basée à St. John's, Antigua. Nous servons clients et partenaires à Antigua-et-Barbuda, dans les Caraïbes, en Amérique du Nord et en Amérique latine avec des formules à base de plantes traditionnelles, des boissons commerciales, du gros et une cuisine d'inspiration africaine.",
+    pt: "Noyis Africa é uma empresa caribenha de bem-estar, bebidas, atacado e varejo com sede em St. John's, Antígua. Atendemos clientes e parceiros em Antígua e Barbuda, no Caribe, América do Norte e América Latina com fórmulas herbais tradicionais, bebidas comerciais, fornecimento no atacado e culinária de inspiração africana.",
+  },
+
+  divisions_title: { en: "Our Divisions", es: "Nuestras Divisiones", fr: "Nos Divisions", pt: "Nossas Divisões" },
+  div_wellness_title: { en: "Natural Wellness", es: "Bienestar Natural", fr: "Bien-être Naturel", pt: "Bem-estar Natural" },
+  div_wellness_body: {
+    en: "Traditional herbal wellness formulas including the Treasure line, wellness teas and botanical oils.",
+    es: "Fórmulas herbales tradicionales, incluida la línea Treasure, tés de bienestar y aceites botánicos.",
+    fr: "Formules traditionnelles à base de plantes, dont la gamme Treasure, tisanes et huiles botaniques.",
+    pt: "Fórmulas herbais tradicionais, incluindo a linha Treasure, chás de bem-estar e óleos botânicos.",
+  },
+  div_beverages_title: { en: "Commercial Beverages", es: "Bebidas Comerciales", fr: "Boissons Commerciales", pt: "Bebidas Comerciais" },
+  div_beverages_body: {
+    en: "Caribbean and African-bottled soft drinks and bulk beverage supply for retailers and events.",
+    es: "Refrescos embotellados en el Caribe y África y suministro al por mayor para tiendas y eventos.",
+    fr: "Sodas embouteillés en Afrique et dans les Caraïbes, et fourniture en gros pour détaillants et événements.",
+    pt: "Refrigerantes engarrafados no Caribe e na África e fornecimento a granel para varejistas e eventos.",
+  },
+  div_wholesale_title: { en: "Wholesale Distribution", es: "Distribución al Mayoreo", fr: "Distribution en Gros", pt: "Distribuição no Atacado" },
+  div_wholesale_body: {
+    en: "Retail and wholesale warehouse serving Antigua & Barbuda, the Caribbean, the US, Canada and Latin America.",
+    es: "Almacén minorista y mayorista para Antigua y Barbuda, el Caribe, EE. UU., Canadá y América Latina.",
+    fr: "Entrepôt de gros et retail desservant Antigua-et-Barbuda, les Caraïbes, les USA, le Canada et l'Amérique latine.",
+    pt: "Armazém de atacado e varejo para Antígua e Barbuda, Caribe, EUA, Canadá e América Latina.",
+  },
+  div_cuisine_title: { en: "Noyis Africa Cuisines", es: "Cocina Noyis Africa", fr: "Cuisines Noyis Africa", pt: "Culinária Noyis Africa" },
+  div_cuisine_body: {
+    en: "Snack boxes, lunch packs, catering and African-inspired food offerings prepared in-house.",
+    es: "Cajas de snacks, lunch packs, catering y propuestas gastronómicas de inspiración africana, preparadas en casa.",
+    fr: "Boîtes snacks, lunch packs, traiteur et offres gastronomiques d'inspiration africaine, préparées en interne.",
+    pt: "Snack boxes, lunch packs, catering e propostas gastronômicas de inspiração africana, preparadas internamente.",
+  },
+
+  experiences_title: { en: "Customer Experiences", es: "Experiencias de Clientes", fr: "Témoignages Clients", pt: "Experiências de Clientes" },
+  experiences_sub: {
+    en: "What our community across the Caribbean is sharing about Noyis Africa.",
+    es: "Lo que nuestra comunidad en el Caribe comparte sobre Noyis Africa.",
+    fr: "Ce que notre communauté caribéenne partage à propos de Noyis Africa.",
+    pt: "O que a nossa comunidade pelo Caribe compartilha sobre a Noyis Africa.",
+  },
+  exp_1: {
+    en: "\"Reliable wholesale partner. Orders ship on time and the Treasure line moves quickly in our store.\" — Retail partner, Antigua",
+    es: "\"Socio mayorista confiable. Los pedidos llegan a tiempo y la línea Treasure se mueve rápido en nuestra tienda.\" — Socio minorista, Antigua",
+    fr: "\"Partenaire de gros fiable. Les commandes arrivent à l'heure et la gamme Treasure se vend très vite.\" — Partenaire détaillant, Antigua",
+    pt: "\"Parceiro de atacado confiável. Os pedidos chegam no prazo e a linha Treasure tem ótima saída.\" — Parceiro varejista, Antígua",
+  },
+  exp_2: {
+    en: "\"Friendly staff at the Lower Nevis Street store and quick WhatsApp ordering. We restock for our café every month.\" — Café owner, St. John's",
+    es: "\"Equipo amable en la tienda de Lower Nevis Street y pedidos rápidos por WhatsApp. Reabastecemos cada mes.\" — Dueño de café, St. John's",
+    fr: "\"Équipe accueillante à la boutique de Lower Nevis Street et commandes rapides sur WhatsApp. Nous nous réapprovisionnons chaque mois.\" — Propriétaire de café, St. John's",
+    pt: "\"Equipe simpática na loja da Lower Nevis Street e pedidos rápidos pelo WhatsApp. Reabastecemos todo mês.\" — Dono de café, St. John's",
+  },
+  exp_3: {
+    en: "\"Love that everything feels natural and well sourced. The Treasure herbal line is part of our family wellness routine.\" — Customer, Caribbean",
+    es: "\"Me encanta que todo se sienta natural y bien seleccionado. La línea Treasure es parte del bienestar de mi familia.\" — Cliente, Caribe",
+    fr: "\"J'adore le côté naturel et bien sourcé. La gamme Treasure fait partie de notre routine bien-être familiale.\" — Cliente, Caraïbes",
+    pt: "\"Amo que tudo é natural e bem selecionado. A linha Treasure faz parte da rotina de bem-estar da família.\" — Cliente, Caribe",
+  },
 
   whatsapp_intro: {
     en: "Hello Noyis Africa,\n\nI'd like to place an order for:",
