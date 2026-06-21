@@ -18,8 +18,9 @@ export function SiteFooter() {
             </div>
           </div>
           <p className="mt-4 max-w-sm text-sm text-botanical-foreground/75">
-            Wholesale &amp; retail warehouse for natural wellness, herbal formulas and Caribbean beverages.
-            Shipping across Antigua, the Caribbean, the US, Canada and Latin America.
+            Wholesale &amp; retail warehouse for traditional herbal wellness formulas, Caribbean
+            beverages and African-inspired cuisines. Shipping across Antigua, the Caribbean, the
+            US, Canada and Latin America.
           </p>
         </div>
 
