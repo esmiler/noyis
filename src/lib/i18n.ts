@@ -249,10 +249,10 @@ export const t: Dict = {
     pt: "Como chegar",
   },
   carn_grounding: {
-    en: "Formulated with Caribbean botanical extracts to support recovery from intense dehydration.",
-    es: "Formulado con extractos botánicos del Caribe para apoyar la recuperación tras una deshidratación intensa.",
-    fr: "Formulé avec des extraits botaniques des Caraïbes pour soutenir la récupération après une déshydratation intense.",
-    pt: "Formulado com extratos botânicos caribenhos para apoiar a recuperação de desidratação intensa.",
+    en: "Crafted with Caribbean and African botanicals for everyday hydration and wellness support.",
+    es: "Elaborado con botánicos del Caribe y África para apoyar la hidratación y el bienestar diario.",
+    fr: "Élaboré avec des plantes des Caraïbes et d'Afrique pour soutenir l'hydratation et le bien-être au quotidien.",
+    pt: "Elaborado com botânicos do Caribe e da África para apoiar a hidratação e o bem-estar diário.",
   },
 
   slide1_title: {
