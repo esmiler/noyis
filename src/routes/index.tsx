@@ -58,6 +58,45 @@ function HomePage() {
       {/* HERO — Carnival 2026 slider */}
       <CarnivalHero />
 
+      {/* WHO WE ARE */}
+      <section className="bg-background py-14 sm:py-16">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-3 lg:items-start">
+          <div className="lg:col-span-1">
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary">Noyis Africa</p>
+            <h2 className="mt-2 font-display text-3xl text-botanical sm:text-4xl">{tr("who_title", lang)}</h2>
+          </div>
+          <p className="text-base text-muted-foreground lg:col-span-2">{tr("who_body", lang)}</p>
+        </div>
+      </section>
+
+      {/* OUR DIVISIONS */}
+      <section className="border-y border-border bg-sand py-14 sm:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <h2 className="font-display text-3xl text-botanical sm:text-4xl">{tr("divisions_title", lang)}</h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { icon: Leaf, title: tr("div_wellness_title", lang), body: tr("div_wellness_body", lang), to: "/products" as const, search: { cat: "natural-wellness" } },
+              { icon: Package, title: tr("div_beverages_title", lang), body: tr("div_beverages_body", lang), to: "/products" as const, search: { cat: "commercial-beverages" } },
+              { icon: Truck, title: tr("div_wholesale_title", lang), body: tr("div_wholesale_body", lang), to: "/wholesale" as const, search: undefined },
+              { icon: Globe2, title: tr("div_cuisine_title", lang), body: tr("div_cuisine_body", lang), to: "/contact" as const, search: undefined },
+            ].map((d, i) => (
+              <Link
+                key={i}
+                to={d.to}
+                search={d.search as never}
+                className="group flex flex-col rounded-2xl border border-border bg-card p-5 shadow-soft transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-card"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <d.icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-4 font-display text-lg text-botanical">{d.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{d.body}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* SMART CATEGORY SELECTOR */}
       <section className="border-y border-border bg-sand py-14">
