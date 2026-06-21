@@ -48,6 +48,8 @@ export const t: Dict = {
   nav_faq: { en: "FAQ", es: "Preguntas", fr: "FAQ", pt: "Perguntas" },
   nav_products: { en: "All Products", es: "Productos", fr: "Produits", pt: "Produtos" },
   nav_guides: { en: "Guides", es: "Guías", fr: "Guides", pt: "Guias" },
+  nav_treasure: { en: "Treasure Collection", es: "Colección Treasure", fr: "Collection Treasure", pt: "Coleção Treasure" },
+  footer_pages: { en: "Pages", es: "Páginas", fr: "Pages", pt: "Páginas" },
 
   cart: { en: "Cart", es: "Carrito", fr: "Panier", pt: "Carrinho" },
   cart_empty: { en: "Your cart is empty.", es: "Tu carrito está vacío.", fr: "Votre panier est vide.", pt: "Seu carrinho está vazio." },
