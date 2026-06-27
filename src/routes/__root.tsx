@@ -199,7 +199,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LangProvider>
+        <GeoShippingBanner />
         <Outlet />
+        <WhatsAppWidget />
       </LangProvider>
     </QueryClientProvider>
   );
