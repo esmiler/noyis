@@ -52,6 +52,14 @@ function HomePage() {
   const { lang } = useLang();
   const { data: featured } = useSuspenseQuery(featuredQuery);
   const { data: categories } = useSuspenseQuery(categoriesQuery);
+  const [divisionsExpanded, setDivisionsExpanded] = useState(false);
+
+  const divisions = [
+    { icon: Leaf, title: tr("div_wellness_title", lang), body: tr("div_wellness_body", lang), to: "/products" as const, search: { cat: "natural-wellness" } },
+    { icon: Package, title: tr("div_beverages_title", lang), body: tr("div_beverages_body", lang), to: "/products" as const, search: { cat: "commercial-beverages" } },
+    { icon: Truck, title: tr("div_wholesale_title", lang), body: tr("div_wholesale_body", lang), to: "/wholesale" as const, search: undefined },
+    { icon: Globe2, title: tr("div_cuisine_title", lang), body: tr("div_cuisine_body", lang), to: "/contact" as const, search: undefined },
+  ];
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
