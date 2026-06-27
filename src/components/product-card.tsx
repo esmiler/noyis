@@ -26,6 +26,24 @@ export function ProductCard({ product }: { product: ProductLike }) {
   const short = localized(product.short_description_localized, lang);
   const inStock = product.stock_status === "in_stock";
 
+  const [region, setRegion] = useState<string>("");
+  useEffect(() => {
+    const cached = typeof window !== "undefined" ? sessionStorage.getItem("noyis-country") : null;
+    if (cached) { setRegion(cached); return; }
+    fetch("https://ipapi.co/country_name/")
+      .then((r) => (r.ok ? r.text() : ""))
+      .then((c) => {
+        const cc = (c || "").trim();
+        if (cc) { setRegion(cc); sessionStorage.setItem("noyis-country", cc); }
+      })
+      .catch(() => {});
+  }, []);
+
+  const waUrl = whatsAppUrl(
+    `Hi Noyis, I would like to quickly order ${name} for delivery to ${region || "my region"}.`,
+    PRIMARY_WHATSAPP,
+  );
+
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-card">
       <Link to="/products/$slug" params={{ slug: product.slug }} className="block">
