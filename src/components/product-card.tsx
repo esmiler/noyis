@@ -74,29 +74,33 @@ export function ProductCard({ product }: { product: ProductLike }) {
         </Link>
         <p className="line-clamp-2 text-sm text-muted-foreground">{short}</p>
 
-        <div className="mt-auto flex items-end justify-between gap-3 pt-3">
+        <div className="mt-auto flex flex-col gap-2 pt-3">
           <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
             {tr("price_on_request", lang)}
           </p>
-
-          {inStock ? (
+          <div className="flex items-center gap-2">
             <Button
+              asChild
               size="sm"
-              onClick={() =>
-                add({ slug: product.slug, name, price_usd: null })
-              }
-              className="bg-primary text-primary-foreground hover:bg-botanical"
-              aria-label={tr("add_to_cart", lang)}
+              className="flex-1 bg-[#25D366] text-white hover:bg-[#1DA851]"
             >
-              <ShoppingCart className="h-4 w-4" />
-            </Button>
-          ) : (
-            <Button size="sm" variant="outline" asChild>
-              <a href={`https://wa.me/12687210101?text=${encodeURIComponent(`Hello, is ${name} available?`)}`} target="_blank" rel="noreferrer">
-                {tr("contact_for_availability", lang)}
+              <a href={waUrl} target="_blank" rel="noreferrer" aria-label={`${tr("order_via_whatsapp", lang)} — ${name}`}>
+                <MessageCircle className="mr-1.5 h-4 w-4" />
+                {tr("order_via_whatsapp", lang)}
               </a>
             </Button>
-          )}
+            {inStock && (
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => add({ slug: product.slug, name, price_usd: null })}
+                className="border-gold/60 text-botanical hover:bg-gold/10"
+                aria-label={tr("add_to_cart", lang)}
+              >
+                <ShoppingCart className="h-4 w-4" />
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     </article>
