@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LangProvider } from "@/components/lang-context";
+import { GeoShippingBanner } from "@/components/geo-shipping-banner";
+import { WhatsAppWidget } from "@/components/whatsapp-widget";
 
 function NotFoundComponent() {
   return (
@@ -197,7 +199,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LangProvider>
+        <GeoShippingBanner />
         <Outlet />
+        <WhatsAppWidget />
       </LangProvider>
     </QueryClientProvider>
   );

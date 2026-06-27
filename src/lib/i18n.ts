@@ -451,6 +451,81 @@ export const t: Dict = {
     fr: "Entrepôt Noyis Africa sur Lower Nevis Street, Saint John, Antigua",
     pt: "Armazém Noyis Africa na Lower Nevis Street, Saint John, Antígua",
   },
+
+  ship_us_ca: {
+    en: "🚚 USA & Canada: Fast shipping in 5-7 business days. Free shipping on orders over $75 USD!",
+    es: "🚚 EE.UU. y Canadá: Envío rápido en 5-7 días hábiles. ¡Envío gratis en pedidos superiores a $75 USD!",
+    fr: "🚚 USA et Canada : Livraison rapide en 5-7 jours ouvrés. Livraison gratuite dès 75 USD !",
+    pt: "🚚 EUA e Canadá: Envio rápido em 5-7 dias úteis. Frete grátis em pedidos acima de $75 USD!",
+  },
+  ship_caribbean: {
+    en: "🏝️ Caribbean: Regional hub fulfillment in 2-3 business days. Same-day delivery available in Antigua.",
+    es: "🏝️ Caribe: Distribución regional en 2-3 días hábiles. Entrega el mismo día en Antigua.",
+    fr: "🏝️ Caraïbes : Distribution régionale en 2-3 jours ouvrés. Livraison le jour même à Antigua.",
+    pt: "🏝️ Caribe: Distribuição regional em 2-3 dias úteis. Entrega no mesmo dia em Antígua.",
+  },
+  ship_latam: {
+    en: "🌎 Latin America: Reliable shipping in 7-10 business days. Wholesale and volume rates available for bulk orders.",
+    es: "🌎 América Latina: Envío confiable en 7-10 días hábiles. Tarifas mayoristas y por volumen disponibles.",
+    fr: "🌎 Amérique latine : Livraison fiable en 7-10 jours ouvrés. Tarifs grossistes et volumes disponibles.",
+    pt: "🌎 América Latina: Envio confiável em 7-10 dias úteis. Tarifas para atacado e volume disponíveis.",
+  },
+  ship_global: {
+    en: "🌍 Premium Global Fulfillment: Shipping natural wellness formulas worldwide.",
+    es: "🌍 Distribución Global Premium: Enviamos fórmulas naturales de bienestar a todo el mundo.",
+    fr: "🌍 Distribution Mondiale Premium : Nos formules bien-être livrées partout dans le monde.",
+    pt: "🌍 Distribuição Global Premium: Fórmulas naturais de bem-estar enviadas para todo o mundo.",
+  },
+
+  carnival_count: {
+    en: "🎉 Antigua Carnival 2026 begins in {days} DAYS! Arrive Prepared — Secure your Stamina, Wellness, and Recovery essentials now.",
+    es: "🎉 ¡El Carnaval de Antigua 2026 comienza en {days} DÍAS! Llega preparado: asegura tus esenciales de energía, bienestar y recuperación.",
+    fr: "🎉 Le Carnaval d'Antigua 2026 commence dans {days} JOURS ! Arrivez préparé — assurez vos essentiels d'énergie, bien-être et récupération.",
+    pt: "🎉 O Carnaval de Antígua 2026 começa em {days} DIAS! Chegue preparado — garanta seus essenciais de energia, bem-estar e recuperação.",
+  },
+  carnival_deadline: {
+    en: "⚠️ Order by July 20 to guarantee delivery before Carnival events kick off!",
+    es: "⚠️ Pide antes del 20 de julio para garantizar la entrega antes del Carnaval.",
+    fr: "⚠️ Commandez avant le 20 juillet pour garantir la livraison avant le Carnaval.",
+    pt: "⚠️ Peça até 20 de julho para garantir a entrega antes do Carnaval.",
+  },
+  carnival_live: {
+    en: "🎶 Carnival is LIVE! Pop into Lower Nevis Street or order on WhatsApp for same-day delivery.",
+    es: "🎶 ¡El Carnaval está EN VIVO! Visítanos en Lower Nevis Street o pide por WhatsApp con entrega el mismo día.",
+    fr: "🎶 Le Carnaval est en COURS ! Passez à Lower Nevis Street ou commandez sur WhatsApp en livraison le jour même.",
+    pt: "🎶 O Carnaval está ROLANDO! Visite a Lower Nevis Street ou peça pelo WhatsApp com entrega no mesmo dia.",
+  },
+  carnival_post: {
+    en: "✨ Recovery & Recharge Season: Detox & Restore with the premium Treasure Herbs line.",
+    es: "✨ Temporada de Recuperación: Renueva y restaura con la línea premium Treasure Herbs.",
+    fr: "✨ Saison de Récupération : Détoxifiez et restaurez avec la gamme premium Treasure Herbs.",
+    pt: "✨ Temporada de Recuperação: Renove e restaure com a linha premium Treasure Herbs.",
+  },
+
+  order_via_whatsapp: {
+    en: "Order via WhatsApp",
+    es: "Pedir por WhatsApp",
+    fr: "Commander sur WhatsApp",
+    pt: "Pedir pelo WhatsApp",
+  },
+  wa_widget_label: {
+    en: "Chat with Noyis Africa on WhatsApp",
+    es: "Chatea con Noyis Africa en WhatsApp",
+    fr: "Discuter avec Noyis Africa sur WhatsApp",
+    pt: "Converse com a Noyis Africa no WhatsApp",
+  },
+  load_more: {
+    en: "Load more",
+    es: "Ver más",
+    fr: "Voir plus",
+    pt: "Ver mais",
+  },
+  show_less: {
+    en: "Show less",
+    es: "Ver menos",
+    fr: "Voir moins",
+    pt: "Ver menos",
+  },
 };
 
 export function tr(key: keyof typeof t, lang: Lang): string {

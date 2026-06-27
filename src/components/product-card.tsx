@@ -1,9 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { Leaf, ShoppingCart } from "lucide-react";
+import { Leaf, MessageCircle, ShoppingCart } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useLang } from "./lang-context";
 import { localized, tr } from "@/lib/i18n";
 import { useCart } from "@/hooks/use-cart";
 import { Button } from "@/components/ui/button";
+import { PRIMARY_WHATSAPP, whatsAppUrl } from "@/lib/whatsapp";
 
 export interface ProductLike {
   slug: string;
@@ -23,6 +25,24 @@ export function ProductCard({ product }: { product: ProductLike }) {
   const name = localized(product.name_localized, lang);
   const short = localized(product.short_description_localized, lang);
   const inStock = product.stock_status === "in_stock";
+
+  const [region, setRegion] = useState<string>("");
+  useEffect(() => {
+    const cached = typeof window !== "undefined" ? sessionStorage.getItem("noyis-country") : null;
+    if (cached) { setRegion(cached); return; }
+    fetch("https://ipapi.co/country_name/")
+      .then((r) => (r.ok ? r.text() : ""))
+      .then((c) => {
+        const cc = (c || "").trim();
+        if (cc) { setRegion(cc); sessionStorage.setItem("noyis-country", cc); }
+      })
+      .catch(() => {});
+  }, []);
+
+  const waUrl = whatsAppUrl(
+    `Hi Noyis, I would like to quickly order ${name} for delivery to ${region || "my region"}.`,
+    PRIMARY_WHATSAPP,
+  );
 
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-card">
@@ -54,29 +74,33 @@ export function ProductCard({ product }: { product: ProductLike }) {
         </Link>
         <p className="line-clamp-2 text-sm text-muted-foreground">{short}</p>
 
-        <div className="mt-auto flex items-end justify-between gap-3 pt-3">
+        <div className="mt-auto flex flex-col gap-2 pt-3">
           <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
             {tr("price_on_request", lang)}
           </p>
-
-          {inStock ? (
+          <div className="flex items-center gap-2">
             <Button
+              asChild
               size="sm"
-              onClick={() =>
-                add({ slug: product.slug, name, price_usd: null })
-              }
-              className="bg-primary text-primary-foreground hover:bg-botanical"
-              aria-label={tr("add_to_cart", lang)}
+              className="flex-1 bg-[#25D366] text-white hover:bg-[#1DA851]"
             >
-              <ShoppingCart className="h-4 w-4" />
-            </Button>
-          ) : (
-            <Button size="sm" variant="outline" asChild>
-              <a href={`https://wa.me/12687210101?text=${encodeURIComponent(`Hello, is ${name} available?`)}`} target="_blank" rel="noreferrer">
-                {tr("contact_for_availability", lang)}
+              <a href={waUrl} target="_blank" rel="noreferrer" aria-label={`${tr("order_via_whatsapp", lang)} — ${name}`}>
+                <MessageCircle className="mr-1.5 h-4 w-4" />
+                {tr("order_via_whatsapp", lang)}
               </a>
             </Button>
-          )}
+            {inStock && (
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => add({ slug: product.slug, name, price_usd: null })}
+                className="border-gold/60 text-botanical hover:bg-gold/10"
+                aria-label={tr("add_to_cart", lang)}
+              >
+                <ShoppingCart className="h-4 w-4" />
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     </article>
