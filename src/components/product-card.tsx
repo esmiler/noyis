@@ -1,9 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { Leaf, ShoppingCart } from "lucide-react";
+import { Leaf, MessageCircle, ShoppingCart } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useLang } from "./lang-context";
 import { localized, tr } from "@/lib/i18n";
 import { useCart } from "@/hooks/use-cart";
 import { Button } from "@/components/ui/button";
+import { PRIMARY_WHATSAPP, whatsAppUrl } from "@/lib/whatsapp";
 
 export interface ProductLike {
   slug: string;
