@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { ArrowRight, Leaf, Truck, Package, Globe2, MessageCircle, ShieldCheck } from "lucide-react";
+import { ArrowRight, Leaf, Truck, Package, Globe2, MessageCircle, ShieldCheck, ChevronDown } from "lucide-react";
+import { useState } from "react";
 import { listProducts, listCategories } from "@/lib/products.functions";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -10,6 +11,7 @@ import { localized, tr } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import lineup from "@/assets/noyis-treasure-lineup.jpg.asset.json";
 import { CarnivalHero } from "@/components/carnival-hero";
+import { CarnivalTimer } from "@/components/carnival-timer";
 
 const featuredQuery = queryOptions({
   queryKey: ["products", "featured"],
